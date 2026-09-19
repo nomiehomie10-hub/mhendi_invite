@@ -11,11 +11,11 @@ const s = (f) => path.join(SRC, f);
 
 /** Scene / frame art that keeps its own background. */
 const SCENES = [
-  ["ChatGPT Image Sep 19, 2026 at 08_36_10 PM.png", "entry/courtyard-doorway.webp", 1080],
-  ["ChatGPT Image Sep 19, 2026 at 08_36_17 PM.png", "hero/courtyard-golden-hour.webp", 1080],
+  ["ChatGPT Image Sep 19, 2026 at 08_36_10 PM.png", "entry/doorway.webp", 1080],
+  ["ChatGPT Image Sep 19, 2026 at 08_36_17 PM.png", "hero/golden-hour.webp", 1080],
   ["11F54984-BA06-4C71-9AA2-31BF532F7469.PNG", "poster/signature-arch-frame.webp", 1080],
-  ["9D66BC4F-9D03-4EE8-BDD4-C24182E64C51.PNG", "celebration/courtyard-dance.webp", 1080],
-  ["81138E34-D94F-4B42-868B-3B2DB113A44B.PNG", "venue/courtyard-arch-evening.webp", 1122],
+  ["9D66BC4F-9D03-4EE8-BDD4-C24182E64C51.PNG", "celebration/dance.webp", 1080],
+  ["81138E34-D94F-4B42-868B-3B2DB113A44B.PNG", "venue/arch-evening.webp", 1122],
   ["734C90C5-1FB1-460D-B00F-82FD313DB5BA.PNG", "closing/ivory-floral-frame.webp", 1080],
   // ink-on-paper art, composited with mix-blend-mode: multiply on ivory
   ["PHOTO-2026-09-19-21-32-07 2.jpg", "texture/mughal-floral-pattern.webp", 853],

@@ -6,7 +6,7 @@ import { CelebrationSection } from "./CelebrationSection";
 import { ClosingCelebration } from "./ClosingCelebration";
 import { CoupleSection } from "./CoupleSection";
 import { FormalInvitation } from "./FormalInvitation";
-import { CourtyardEntrance } from "./MehndiEntry";
+import { EntranceDoors } from "./MehndiEntry";
 import { DetailsSection } from "./DetailsSection";
 import { MehndiCountdown } from "./MehndiCountdown";
 import { MehndiHero } from "./MehndiHero";
@@ -17,7 +17,7 @@ import { SignaturePoster } from "./SignaturePoster";
 import { VenueSection } from "./VenueSection";
 
 /**
- * The courtyard, end to end. There is no navigation: the guest arrives at
+ * The evening, end to end. There is no navigation: the guest arrives at
  * the entrance and walks through the evening in order.
  *
  * `entered` is the only piece of state the whole experience shares — it
@@ -28,7 +28,7 @@ export function MehndiExperience() {
 
   return (
     <div className="mehndi">
-      <CourtyardEntrance
+      <EntranceDoors
         onEnter={() => {
           setEntered(true);
           // Raised inside the tap's own handler, which is the only moment

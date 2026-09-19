@@ -26,7 +26,7 @@ export function CelebrationSection() {
 
       <div ref={art} className={`${styles.artWrap} wash`} data-shown={shown}>
         <Artwork
-          src="/images/mehndi/celebration/courtyard-dance.webp"
+          src="/images/mehndi/celebration/dance.webp"
           alt=""
           fill
           sizes="(max-width: 640px) 100vw, 560px"

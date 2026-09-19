@@ -7,7 +7,7 @@ import { OccasionLockup } from "./OccasionLockup";
 import styles from "./MehndiHero.module.css";
 
 /**
- * Stepping inside. The courtyard fills the screen and drifts at three
+ * Stepping inside. The scene fills the screen and drifts at three
  * different depths as the guest scrolls — slowly enough to read as air
  * rather than movement.
  */
@@ -24,7 +24,7 @@ export function MehndiHero({ entered }: { entered: boolean }) {
     >
       <div ref={background} className={styles.bg}>
         <Artwork
-          src="/images/mehndi/hero/courtyard-golden-hour.webp"
+          src="/images/mehndi/hero/golden-hour.webp"
           alt=""
           fill
           priority

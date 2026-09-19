@@ -18,7 +18,7 @@ export function SignaturePoster() {
     <section
       ref={ref}
       className={`chapter chapter--full chapter--deep ${styles.section}`}
-      aria-label={`Nikah and Mehndi — ${mehndi.couple.bride} and ${mehndi.couple.groom}`}
+      aria-label={`Nikkah and Mehndi — ${mehndi.couple.bride} and ${mehndi.couple.groom}`}
     >
       <div className={styles.frame}>
         <Artwork

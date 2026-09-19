@@ -1,5 +1,5 @@
 /**
- * Every piece of content in the Mehndi Courtyard experience lives here.
+ * Every piece of content in the invitation lives here.
  * Components read from this file and never hardcode names, times or copy.
  */
 
@@ -17,7 +17,7 @@ export type MehndiEvent = {
   description: string;
   icon: MehndiIcon;
   /** Which half of the evening this belongs to. */
-  phase: "nikah" | "mehndi";
+  phase: "nikkah" | "mehndi";
 };
 
 export type MehndiDetail = {
@@ -57,7 +57,7 @@ export const mehndi = {
 
   /** The two halves of the night, used as one lockup throughout. */
   occasion: {
-    first: "Nikah",
+    first: "Nikkah",
     second: "Mehndi",
     joiner: "&",
   },
@@ -93,7 +93,7 @@ export const mehndi = {
   },
 
   celebration: {
-    eyebrow: "The Courtyard",
+    eyebrow: "The Evening",
     headline: "First the promise. Then the dhol.",
   },
 
@@ -101,7 +101,7 @@ export const mehndi = {
     eyebrow: "The Night Ahead",
     title: "The Night",
     /** Shown where the ceremony gives way to the celebration. */
-    turn: "The vows are made. Now the courtyard comes alive.",
+    turn: "The vows are made. Now the celebration begins.",
   },
 
   closing: {
@@ -113,21 +113,21 @@ export const mehndi = {
     {
       time: "19:00",
       title: "Arrival of Guests",
-      description: "Chilled sharbat under the garlands as the courtyard fills.",
+      description: "Chilled sharbat under the garlands as everyone arrives.",
       icon: "sharbat",
-      phase: "nikah",
+      phase: "nikkah",
     },
     {
       time: "20:00",
-      title: "The Nikah",
+      title: "The Nikkah",
       description: "The ceremony, and the moment everything is promised.",
       icon: "entrance-arch",
-      phase: "nikah",
+      phase: "nikkah",
     },
     {
       time: "21:00",
       title: "Dinner",
-      description: "Served in the courtyard, under the lanterns.",
+      description: "Served under the lanterns, as the evening settles in.",
       icon: "dinner",
       phase: "mehndi",
     },

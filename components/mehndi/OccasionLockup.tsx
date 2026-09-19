@@ -11,9 +11,9 @@ type Props = {
 };
 
 /**
- * "Nikah & Mehndi" — the mark this invitation is built around.
+ * "Nikkah & Mehndi" — the mark this invitation is built around.
  *
- * The two halves of the night are set differently on purpose: the Nikah in
+ * The two halves of the night are set differently on purpose: the Nikkah in
  * small, spaced, upright capitals, the Mehndi in a large sloped serif. The
  * ceremony and the celebration in one line, which is exactly what the evening
  * is. It appears at the entry, the hero, the poster and the close, so the

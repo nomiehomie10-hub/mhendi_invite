@@ -1,4 +1,4 @@
-/* The hero: standing inside the courtyard at golden hour. */
+/* The hero: standing inside the scene at golden hour. */
 
 .hero {
   padding-top: calc(var(--chapter-pad) + env(safe-area-inset-top));

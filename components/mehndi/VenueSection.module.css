@@ -1,4 +1,4 @@
-/* The venue: the courtyard at dusk, with the address set into the light. */
+/* The venue at dusk, with the address set into the light. */
 
 .section {
   padding-block: calc(var(--chapter-pad) + env(safe-area-inset-top))

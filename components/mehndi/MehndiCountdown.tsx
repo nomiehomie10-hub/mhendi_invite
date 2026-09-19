@@ -46,7 +46,7 @@ export function MehndiCountdown() {
           className={`label ${styles.eyebrow} reveal`}
           data-shown={shown}
         >
-          {remaining?.past ? "The courtyard is open" : "Until the courtyard opens"}
+          {remaining?.past ? "The celebration has begun" : "Until the celebration begins"}
         </h2>
 
         {remaining?.past ? (

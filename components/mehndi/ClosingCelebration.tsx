@@ -15,7 +15,7 @@ const PETALS = [
 ];
 
 /**
- * The courtyard after the celebration. The botanical frame grows up from
+ * The garden after the celebration. The botanical frame grows up from
  * the bottom of the screen and the last words sit in the quiet above it.
  */
 export function ClosingCelebration() {

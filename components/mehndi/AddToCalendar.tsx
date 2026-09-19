@@ -29,10 +29,10 @@ function buildIcs() {
   const lines = [
     "BEGIN:VCALENDAR",
     "VERSION:2.0",
-    "PRODID:-//Mehndi Courtyard//EN",
+    "PRODID:-//Nikkah and Mehndi//EN",
     "CALSCALE:GREGORIAN",
     "BEGIN:VEVENT",
-    `UID:mehndi-${mehndi.date}@courtyard.invite`,
+    `UID:mehndi-${mehndi.date}@mehndi.invite`,
     `DTSTAMP:${stamp(mehndi.startsAt)}`,
     `DTSTART:${stamp(mehndi.startsAt)}`,
     `DTEND:${stamp(mehndi.endsAt)}`,

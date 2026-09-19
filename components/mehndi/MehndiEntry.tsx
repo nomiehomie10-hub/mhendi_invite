@@ -12,10 +12,10 @@ type Props = {
 };
 
 /**
- * The courtyard entrance. The whole screen is the control: tapping anywhere
+ * The entrance. The whole screen is the control: tapping anywhere
  * opens the doors, so there is no button sitting on top of the artwork.
  */
-export function CourtyardEntrance({ onEnter }: Props) {
+export function EntranceDoors({ onEnter }: Props) {
   const [opening, setOpening] = useState(false);
   const [gone, setGone] = useState(false);
   const reduced = useReducedMotion();
@@ -46,7 +46,7 @@ export function CourtyardEntrance({ onEnter }: Props) {
   const open = () => {
     if (opening) return;
     setOpening(true);
-    // Whatever happened behind the doors, the courtyard begins at the top.
+    // Whatever happened behind the doors, the evening begins at the top.
     window.scrollTo(0, 0);
     onEnter();
     // The doors take their time; the hero is already behind them.
@@ -60,20 +60,20 @@ export function CourtyardEntrance({ onEnter }: Props) {
       ref={ref}
       type="button"
       onClick={open}
-      aria-label="Enter the courtyard"
+      aria-label="Open the invitation"
       data-opening={opening}
       className={styles.entrance}
     >
       {/* Everything inside the scene moves toward the guest on entry */}
       <span className={styles.scene} aria-hidden="true">
-        {/* Warm courtyard light, which blooms as the doors swing */}
+        {/* Warm light from beyond, which blooms as the doors swing */}
         <span className={styles.lightLeak} />
         {/* The doorway artwork, split down the middle so the halves hinge */}
         <span className={styles.doorWrap}>
           <span className={`${styles.door} ${styles.doorLeft}`}>
             <span className={styles.doorInner}>
               <Artwork
-                src="/images/mehndi/entry/courtyard-doorway.webp"
+                src="/images/mehndi/entry/doorway.webp"
                 alt=""
                 fill
                 priority
@@ -85,7 +85,7 @@ export function CourtyardEntrance({ onEnter }: Props) {
           <span className={`${styles.door} ${styles.doorRight}`}>
             <span className={styles.doorInner}>
               <Artwork
-                src="/images/mehndi/entry/courtyard-doorway.webp"
+                src="/images/mehndi/entry/doorway.webp"
                 alt=""
                 fill
                 priority

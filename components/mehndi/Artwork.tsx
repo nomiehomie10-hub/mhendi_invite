@@ -10,7 +10,7 @@ type ArtworkProps = Omit<ImageProps, "onError" | "alt"> & {
 };
 
 /**
- * Every illustration in the courtyard goes through here. If an asset is
+ * Every illustration goes through here. If an asset is
  * missing the element simply stops occupying space — a guest never sees a
  * broken-image glyph, and the composition closes up around the gap.
  */

@@ -11,8 +11,8 @@ import styles from "./MehndiTimeline.module.css";
  * paper, the text lifts, and the botanical line grows a little further down.
  */
 /**
- * The hinge of the evening. The ceremony ends here and the courtyard opens
- * up, so the line itself changes colour from brass to marigold.
+ * The hinge of the evening. The ceremony ends here and the celebration
+ * opens up, so the line itself changes colour from brass to marigold.
  */
 function PhaseTurn() {
   const { ref, shown } = useReveal<HTMLLIElement>({ threshold: 0.5 });

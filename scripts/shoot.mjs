@@ -53,7 +53,7 @@ await page.waitForTimeout(900);
 await page.screenshot({ path: `${OUT}/00-entry.png` });
 
 // Tap to enter, then let the doors finish.
-await page.locator('button[aria-label="Enter the courtyard"]').click();
+await page.locator('button[aria-label="Open the invitation"]').click();
 await page.waitForTimeout(REDUCED ? 600 : 2600);
 await page.screenshot({ path: `${OUT}/01-hero.png` });
 

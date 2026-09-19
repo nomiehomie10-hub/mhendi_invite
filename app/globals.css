@@ -13,7 +13,7 @@ body {
 }
 
 html {
-  /* iOS rubber-banding should reveal courtyard green, not white. */
+  /* iOS rubber-banding should reveal the deep green, not white. */
   background: #18382c;
   -webkit-text-size-adjust: 100%;
 }

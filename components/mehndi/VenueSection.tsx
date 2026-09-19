@@ -6,7 +6,7 @@ import { Artwork } from "./Artwork";
 import styles from "./VenueSection.module.css";
 
 /**
- * The venue chapter. The painted courtyard at dusk fills the screen and the
+ * The venue chapter. The painted scene at dusk fills the screen and the
  * address is set over it; the map is one small brass line of type, not an
  * embedded panel.
  */
@@ -23,7 +23,7 @@ export function VenueSection() {
     >
       <div ref={art} className={styles.bg}>
         <Artwork
-          src="/images/mehndi/venue/courtyard-arch-evening.webp"
+          src="/images/mehndi/venue/arch-evening.webp"
           alt=""
           fill
           sizes="(max-width: 640px) 100vw, 560px"

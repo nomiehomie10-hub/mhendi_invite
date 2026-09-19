@@ -1,13 +1,13 @@
-# Mehndi Courtyard
+# Nikkah & Mehndi
 
-A digital invitation for the **Nikah & Mehndi** of **Dr Sobia Mariam & Farhan
+A digital invitation for the **Nikkah & Mehndi** of **Dr Sobia Mariam & Farhan
 Ullah Khan** — Friday 09 October 2026, Creek Club, DHA Phase VIII, Karachi.
 
-The guest does not browse a wedding site; they tap a courtyard door open and
-walk through the evening. It is designed for an iPhone first (390 × 844) and
+The guest does not browse a wedding site; they tap a door open and walk
+through the evening. It is designed for an iPhone first (390 × 844) and
 becomes a centred invitation on a dark canvas at desktop widths.
 
-It is one night carrying two occasions, and the design says so. "Nikah" is set
+It is one night carrying two occasions, and the design says so. "Nikkah" is set
 in small spaced capitals and "Mehndi" in a large sloped serif, joined by a
 hairline rule — one lockup, used at the entry, the hero, the poster and the
 close. The running order carries the same idea: the first half runs brass and
@@ -50,7 +50,7 @@ from `couple` rather than keeping its own copy, so the two can never drift
 apart. **The Note** follows it in the wreath — the warm line to friends and
 family, which is all the wreath's opening has room for.
 
-Each chapter is a room in the same courtyard, and the colour moves through
+Each chapter is a room in the same evening, and the colour moves through
 green → ivory → green → saffron → ivory → skin → rose → dusk → green → ivory.
 
 Every chapter does a job no other chapter does. The names appear in four
