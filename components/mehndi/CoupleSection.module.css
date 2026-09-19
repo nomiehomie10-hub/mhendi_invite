@@ -1,0 +1,71 @@
+/* The couple, inside a botanical wreath printed on ivory paper. */
+
+.section {
+  padding-block: clamp(84px, 16vh, 140px);
+}
+
+.stage {
+  text-align: center;
+}
+
+.eyebrow {
+  color: var(--fuchsia);
+  margin: 0;
+}
+
+/* The wreath and the names share one box so the type always lands dead
+   centre of the ring, at every width. */
+.wreathWrap {
+  position: relative;
+  margin-top: 34px;
+  display: grid;
+  place-items: center;
+}
+
+.wreath {
+  grid-area: 1 / 1;
+  width: min(100%, 460px);
+  transform: translate3d(0, var(--parallax, 0px), 0);
+  will-change: transform;
+}
+
+.wreathArt {
+  width: 100%;
+  height: auto;
+}
+
+.names {
+  grid-area: 1 / 1;
+  z-index: 2;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--green);
+  /* The wreath's ring of flowers is widest across its middle third. */
+  padding-inline: 15%;
+}
+
+.name {
+  font-size: clamp(1.25rem, 5.6vw, 1.7rem);
+  line-height: 1.06;
+}
+
+.amp {
+  font-size: clamp(0.85rem, 3.4vw, 1.05rem);
+  color: var(--orange);
+  margin-block: 0.18em;
+}
+
+.body {
+  margin: 36px auto 0;
+  max-width: 21rem;
+  color: var(--ink-on-light-soft);
+  text-wrap: balance;
+}
+
+@media (min-width: 768px) {
+  .wreath {
+    width: 460px;
+  }
+}

@@ -1,0 +1,105 @@
+/* The venue: the courtyard at dusk, with the address set into the light. */
+
+.section {
+  padding-block: calc(var(--chapter-pad) + env(safe-area-inset-top))
+    calc(var(--chapter-pad) + env(safe-area-inset-bottom));
+  justify-content: flex-end;
+  background: #7c4a1f;
+  color: var(--ink-on-dark);
+  isolation: isolate;
+}
+
+.bg {
+  position: absolute;
+  inset: -14% 0;
+  z-index: 0;
+  transform: translate3d(0, var(--parallax, 0px), 0);
+  will-change: transform;
+}
+
+.bgArt {
+  object-fit: cover;
+  object-position: 58% 40%;
+}
+
+.veil {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(60, 30, 10, 0.3) 0%,
+    rgba(60, 30, 10, 0.04) 24%,
+    rgba(48, 24, 8, 0.62) 66%,
+    rgba(36, 18, 6, 0.93) 100%
+  );
+}
+
+.stage {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding-bottom: 3vh;
+}
+
+.eyebrow {
+  margin: 0;
+  color: #f0cf90;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.6);
+}
+
+.name {
+  margin: 20px 0 0;
+  font-size: clamp(2.3rem, 10.4vw, 3rem);
+  line-height: 1.02;
+  color: var(--ink-on-dark);
+  text-shadow: 0 3px 24px rgba(24, 12, 4, 0.7);
+  text-wrap: balance;
+}
+
+.address {
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-style: normal;
+  font-family: var(--font-sans), system-ui, sans-serif;
+  font-size: 0.8125rem;
+  line-height: 1.6;
+  letter-spacing: 0.04em;
+  color: rgba(244, 236, 224, 0.78);
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.65);
+}
+
+/* --- the map line -------------------------------------------------------- */
+
+.mapWrap {
+  margin-top: 30px;
+}
+
+/* A brass rule with a word on it, rather than a button. */
+.map {
+  gap: 9px;
+  padding: 12px 4px 10px;
+  font-size: 0.625rem;
+  letter-spacing: 0.32em;
+  color: #f2d8a2;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(214, 178, 116, 0.55);
+  transition:
+    color 0.4s var(--ease-silk),
+    border-color 0.4s var(--ease-silk);
+}
+
+.map:hover,
+.map:focus-visible {
+  color: #fdf0d2;
+  border-bottom-color: rgba(244, 214, 156, 0.95);
+}
+
+.arrow {
+  transition: transform 0.4s var(--ease-silk);
+}
+
+.map:hover .arrow {
+  transform: translate3d(1.5px, -1.5px, 0);
+}

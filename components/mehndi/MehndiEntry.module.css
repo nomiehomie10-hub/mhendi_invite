@@ -1,0 +1,218 @@
+/* The courtyard entrance: a full-screen doorway that parts when tapped. */
+
+.entrance {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: block;
+  width: 100%;
+  height: 100svh;
+  padding: 0;
+  border: 0;
+  background: var(--forest-deep);
+  color: var(--ink-on-dark);
+  cursor: pointer;
+  overflow: hidden;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  transition: opacity 0.5s var(--ease-silk) 1.15s;
+}
+
+.entrance[data-opening="true"] {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* --- light beyond the doors --------------------------------------------- */
+
+.lightLeak {
+  position: absolute;
+  left: 50%;
+  top: 46%;
+  width: 78%;
+  height: 62%;
+  transform: translate(-50%, -50%) scale(0.7);
+  background: radial-gradient(
+    ellipse at center,
+    rgba(255, 214, 140, 0.85) 0%,
+    rgba(227, 154, 50, 0.4) 34%,
+    rgba(227, 154, 50, 0) 70%
+  );
+  opacity: 0;
+  filter: blur(14px);
+  transition:
+    opacity 1.6s var(--ease-silk),
+    transform 1.8s var(--ease-silk);
+}
+
+.entrance[data-opening="true"] .lightLeak {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1.5);
+}
+
+/* --- the doors ----------------------------------------------------------- */
+
+.doorWrap {
+  position: absolute;
+  inset: 0;
+  display: block;
+}
+
+.door {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 50.4%;
+  overflow: hidden;
+  /* Flush until the tap: the cut down the middle must be invisible. */
+  transition:
+    transform 1.6s var(--ease-curtain),
+    filter 1.6s var(--ease-silk);
+  will-change: transform;
+}
+
+.doorLeft {
+  left: 0;
+  transform-origin: left center;
+  transform: translate3d(0, 0, 0);
+}
+
+.doorRight {
+  right: 0;
+  transform-origin: right center;
+  transform: translate3d(0, 0, 0);
+}
+
+.entrance[data-opening="true"] .doorLeft {
+  transform: translate3d(-101%, 0, 0);
+}
+.entrance[data-opening="true"] .doorRight {
+  transform: translate3d(101%, 0, 0);
+}
+
+/* Each half clips one side of a single continuous painting. The inner layer
+   is the full width of the screen and is pinned to the outer edge of its
+   door, so both halves line up as one image until they part. */
+.doorInner {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: var(--column);
+  display: block;
+}
+.doorLeft .doorInner {
+  left: 0;
+}
+.doorRight .doorInner {
+  right: 0;
+}
+
+.doorArt {
+  object-fit: cover;
+  object-position: center;
+}
+
+/* --- the plate ----------------------------------------------------------- */
+
+.plate {
+  position: absolute;
+  left: 50%;
+  bottom: calc(clamp(56px, 13vh, 104px) + env(safe-area-inset-bottom));
+  translate: -50% 0;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: min(100% - 40px, 440px);
+  text-align: center;
+  transition:
+    opacity 0.7s var(--ease-silk),
+    transform 0.9s var(--ease-silk);
+}
+
+.entrance[data-opening="true"] .plate {
+  opacity: 0;
+  transform: translate3d(0, 14px, 0);
+}
+
+.eyebrow {
+  color: #f0d9a4;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.7);
+}
+
+.names {
+  margin-top: 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--ink-on-dark);
+  text-shadow: 0 3px 22px rgba(0, 0, 0, 0.75);
+}
+
+.name {
+  font-size: clamp(1.75rem, 8.2vw, 2.4rem);
+  line-height: 1.04;
+}
+
+.amp {
+  font-size: clamp(1rem, 4.2vw, 1.3rem);
+  color: #eec36a;
+  margin-block: 0.12em;
+}
+
+.ruleWrap {
+  display: block;
+  width: 116px;
+  margin-top: 20px;
+}
+.ruleWrap > span {
+  display: block;
+}
+
+.instruction {
+  margin-top: 20px;
+  color: rgba(244, 236, 224, 0.82);
+  font-size: 0.625rem;
+  letter-spacing: 0.38em;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.8);
+  animation: breathe 3.6s ease-in-out infinite;
+}
+
+@keyframes breathe {
+  0%,
+  100% {
+    opacity: 0.55;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* The tap itself gets a small, tactile give. */
+.entrance:active .plate {
+  transform: translate3d(0, 0, 0) scale(0.985);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .instruction {
+    animation: none;
+    opacity: 0.9;
+  }
+  .door,
+  .lightLeak,
+    .plate,
+  .entrance {
+    transition-duration: 0.15s !important;
+    transition-delay: 0ms !important;
+  }
+}
+
+/* On a large screen the entrance fills the invitation column, not the page. */
+@media (min-width: 900px) {
+  .entrance {
+    left: 50%;
+    right: auto;
+    width: var(--column);
+    margin-left: calc(var(--column) / -2);
+  }
+}

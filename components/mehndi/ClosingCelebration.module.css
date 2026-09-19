@@ -1,0 +1,114 @@
+/* The courtyard after the celebration. */
+
+.section {
+  padding-block: calc(var(--chapter-pad) + env(safe-area-inset-top))
+    calc(clamp(40px, 8vh, 72px) + env(safe-area-inset-bottom));
+  background: var(--cream);
+  justify-content: flex-start;
+  isolation: isolate;
+}
+
+/* The painted garden grows from the bottom edge of the screen upward. */
+.garden {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  translate: -50% 0;
+  width: min(118%, 640px);
+  z-index: 0;
+  pointer-events: none;
+  transform-origin: bottom center;
+}
+
+.gardenArt {
+  display: block;
+  width: 100%;
+  height: auto;
+  /* The frame art carries its own ivory ground; fading the top edge lets it
+     dissolve into the paper instead of ending on a seam. */
+  mask-image: linear-gradient(to bottom, transparent 0%, #000 22%);
+}
+
+/* --- petals -------------------------------------------------------------- */
+
+.petals {
+  position: absolute;
+  inset: auto 0 18% 0;
+  height: 1px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.petal {
+  position: absolute;
+  bottom: 0;
+  border-radius: 60% 40% 55% 45%;
+  background: var(--marigold);
+  opacity: 0;
+  animation: petal-rise 11s ease-in-out infinite;
+}
+
+.petal:nth-child(2n) {
+  background: var(--rose);
+}
+.petal:nth-child(3n) {
+  background: var(--orange);
+}
+
+/* --- words --------------------------------------------------------------- */
+
+.stage {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  padding-top: 2vh;
+}
+
+.headline {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.line {
+  font-size: clamp(2.5rem, 12vw, 3.4rem);
+  line-height: 1.04;
+  color: var(--green);
+}
+
+.names {
+  margin: 28px 0 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--fuchsia);
+}
+
+.name {
+  font-size: clamp(1.35rem, 5.8vw, 1.7rem);
+  line-height: 1.1;
+  letter-spacing: 0.02em;
+}
+
+.amp {
+  font-size: clamp(0.8rem, 3.2vw, 1rem);
+  color: var(--orange);
+  margin-block: 0.1em;
+}
+
+.signoff {
+  margin-top: 34px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  color: var(--brass);
+}
+
+.signoffText {
+  font-family: var(--font-display), Georgia, serif;
+  font-style: italic;
+  font-size: 1.0625rem;
+  color: var(--ink-on-light-soft);
+}

@@ -1,0 +1,99 @@
+/* The countdown: painted poster numerals inside a botanical arch. */
+
+.section {
+  padding-block: calc(var(--chapter-pad) + env(safe-area-inset-top))
+    calc(var(--chapter-pad) + env(safe-area-inset-bottom));
+  background: var(--forest-deep);
+  color: var(--ink-on-dark);
+  justify-content: center;
+  isolation: isolate;
+}
+
+.frame {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  width: min(104%, 460px);
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.85;
+}
+
+.frameArt {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.stage {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  /* Keeps the numerals inside the arch opening at every width. */
+  padding-inline: 14%;
+}
+
+.eyebrow {
+  margin: 0 0 clamp(30px, 5.5vh, 46px);
+  color: #e8bd6f;
+  font-size: 0.5625rem;
+  letter-spacing: 0.3em;
+}
+
+/* --- the numerals -------------------------------------------------------- */
+
+.units {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(18px, 3.4vh, 30px);
+}
+
+.unit {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 14px;
+}
+
+.number {
+  font-size: clamp(3rem, 15vw, 4.2rem);
+  line-height: 0.86;
+  color: var(--ink-on-dark);
+  /* Lining figures of an even width so the seconds never jitter. */
+  font-variant-numeric: tabular-nums lining-nums;
+  min-width: 2ch;
+  text-align: right;
+  text-shadow: 0 3px 26px rgba(0, 0, 0, 0.55);
+}
+
+.unitLabel {
+  min-width: 4.6em;
+  text-align: left;
+  font-size: 0.5625rem;
+  letter-spacing: 0.3em;
+  color: rgba(244, 236, 224, 0.5);
+}
+
+.past {
+  margin: 0;
+  font-size: clamp(3rem, 15vw, 4rem);
+  color: var(--ink-on-dark);
+}
+
+.date {
+  margin: clamp(34px, 6vh, 52px) 0 0;
+  font-size: 0.5625rem;
+  letter-spacing: 0.32em;
+  color: rgba(244, 236, 224, 0.42);
+}
+
+@media (min-width: 768px) {
+  .stage {
+    padding-inline: 0;
+    max-width: 320px;
+  }
+}

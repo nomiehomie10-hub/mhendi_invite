@@ -1,0 +1,374 @@
+/* ==========================================================================
+   MEHNDI COURTYARD — design tokens, material language and motion primitives.
+   Scoped under .mehndi so nothing here can reach the rest of the site.
+   ========================================================================== */
+
+.mehndi {
+  /* --- pigment ------------------------------------------------------- */
+  --green: #274b3a;
+  --forest: #18382c;
+  --forest-deep: #102519;
+  --marigold: #d99a22;
+  --saffron: #e39a32;
+  --orange: #c86d2a;
+  --rani: #c64b73;
+  --fuchsia: #a92f61;
+  --rose: #d89a9f;
+  --ivory: #f7f0e7;
+  --cream: #fbf7f0;
+  --brass: #a98958;
+
+  /* --- ink ----------------------------------------------------------- */
+  --ink-on-dark: #f4ece0;
+  --ink-on-dark-soft: rgba(244, 236, 224, 0.62);
+  --ink-on-light: #2a3a2f;
+  --ink-on-light-soft: rgba(42, 58, 47, 0.58);
+
+  /* --- rhythm -------------------------------------------------------- */
+  --gutter: 22px;
+  --measure: 34rem;
+  --chapter-pad: clamp(72px, 14vh, 128px);
+
+  /* --- motion -------------------------------------------------------- */
+  --ease-silk: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --ease-curtain: cubic-bezier(0.65, 0, 0.2, 1);
+
+  color: var(--ink-on-light);
+  background: var(--forest-deep);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Desktop keeps the invitation's proportions instead of stretching the
+   artwork across the screen. Past the breakpoint the whole experience becomes
+   a centred column — a printed invitation lying on a large dark canvas — so
+   every composition keeps the hierarchy it was designed for on a phone. */
+.mehndi {
+  --stage: min(100vw, 520px);
+  --column: 100vw;
+}
+
+@media (min-width: 900px) {
+  .mehndi {
+    --column: 560px;
+    width: var(--column);
+    margin-inline: auto;
+    position: relative;
+    box-shadow: 0 0 90px rgba(0, 0, 0, 0.5);
+  }
+}
+
+/* ==========================================================================
+   MATERIAL — handmade paper, painted pigment, aged brass.
+   Every texture is applied per-surface, never as one sheet over the page.
+   ========================================================================== */
+
+/* Paper grain: a fine, irregular tooth. Deliberately near-invisible. */
+.paper::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.5;
+  mix-blend-mode: multiply;
+  background-image: radial-gradient(
+      circle at 17% 32%,
+      rgba(120, 100, 70, 0.05) 0 1px,
+      transparent 1px
+    ),
+    radial-gradient(circle at 63% 71%, rgba(120, 100, 70, 0.045) 0 1px, transparent 1px),
+    radial-gradient(circle at 84% 19%, rgba(120, 100, 70, 0.04) 0 1px, transparent 1px);
+  background-size: 7px 9px, 11px 8px, 9px 13px;
+}
+
+/* Pigment variation: a painted wash never sits perfectly flat. */
+.pigment::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.55;
+  background: radial-gradient(
+      120% 80% at 20% 0%,
+      rgba(255, 255, 255, 0.07),
+      transparent 60%
+    ),
+    radial-gradient(90% 70% at 85% 100%, rgba(0, 0, 0, 0.14), transparent 65%);
+}
+
+/* Ink-on-paper artwork: the illustration's own ivory ground drops out and
+   the pigment prints onto whatever surface is behind it. */
+.ink {
+  mix-blend-mode: multiply;
+}
+
+/* Brass rule — an aged, uneven hairline rather than a border. */
+.rule {
+  height: 1px;
+  border: 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(169, 137, 88, 0.15) 12%,
+    rgba(169, 137, 88, 0.7) 50%,
+    rgba(169, 137, 88, 0.15) 88%,
+    transparent
+  );
+}
+.rule--dark {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(169, 137, 88, 0.2) 12%,
+    rgba(214, 178, 116, 0.75) 50%,
+    rgba(169, 137, 88, 0.2) 88%,
+    transparent
+  );
+}
+
+/* ==========================================================================
+   TYPOGRAPHY
+   ========================================================================== */
+
+.display {
+  font-family: var(--font-display), "Cormorant Garamond", Georgia, serif;
+  font-weight: 300;
+  line-height: 0.92;
+  letter-spacing: -0.015em;
+}
+
+.name {
+  font-family: var(--font-display), "Cormorant Garamond", Georgia, serif;
+  font-weight: 300;
+  font-size: clamp(1.95rem, 9.2vw, 2.7rem);
+  line-height: 1.02;
+  letter-spacing: 0.005em;
+}
+
+.serif {
+  font-family: var(--font-display), "Cormorant Garamond", Georgia, serif;
+  font-weight: 300;
+}
+
+.amp {
+  font-family: var(--font-display), "Cormorant Garamond", Georgia, serif;
+  font-style: italic;
+  font-weight: 300;
+}
+
+/* Small uppercase information — the quiet layer that carries the facts. */
+.label {
+  font-family: var(--font-sans), system-ui, sans-serif;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+}
+
+.label--tight {
+  letter-spacing: 0.2em;
+}
+
+.body {
+  font-family: var(--font-display), "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(1.15rem, 4.6vw, 1.4rem);
+  line-height: 1.55;
+  font-weight: 300;
+}
+
+/* ==========================================================================
+   CHAPTERS — each one is a room in the same courtyard.
+   ========================================================================== */
+
+.chapter {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  padding-block: var(--chapter-pad);
+  padding-inline: var(--gutter);
+}
+
+.chapter--full {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.chapter--green {
+  background: var(--forest);
+  color: var(--ink-on-dark);
+}
+.chapter--deep {
+  background: var(--forest-deep);
+  color: var(--ink-on-dark);
+}
+.chapter--ivory {
+  background: var(--ivory);
+  color: var(--ink-on-light);
+}
+.chapter--saffron {
+  background: linear-gradient(176deg, var(--saffron) 0%, var(--orange) 100%);
+  color: #2e1a09;
+}
+.chapter--rose {
+  background: #f4e3e0;
+  color: #4a2030;
+}
+
+/* The seam between two chapters is a soft wash, not a hard edge. */
+.seam {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 96px;
+  pointer-events: none;
+  z-index: 2;
+}
+.seam--top {
+  top: -1px;
+}
+.seam--bottom {
+  bottom: -1px;
+}
+
+.stage {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  max-width: var(--stage);
+  margin-inline: auto;
+}
+
+/* ==========================================================================
+   MOTION — fabric, flowers, paint, paper, curtains, light.
+   ========================================================================== */
+
+/* Sections enter by settling into place, never by springing. */
+.reveal {
+  opacity: 0;
+  transform: translate3d(0, 22px, 0);
+  transition:
+    opacity 1s var(--ease-silk),
+    transform 1.1s var(--ease-silk);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+.reveal[data-shown="true"] {
+  opacity: 1;
+  transform: none;
+}
+
+/* Painted elements wash in from the top edge, the way a brush lays down. */
+.wash {
+  clip-path: inset(0 0 100% 0);
+  opacity: 0;
+  transition:
+    clip-path 1.5s var(--ease-silk),
+    opacity 0.8s var(--ease-silk);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+.wash[data-shown="true"] {
+  clip-path: inset(0 0 0 0);
+  opacity: 1;
+}
+
+/* A botanical line drawing itself down the page. */
+.draw {
+  transition: transform 1.4s var(--ease-silk);
+  transform-origin: top center;
+  transform: scaleY(0);
+}
+.draw[data-shown="true"] {
+  transform: scaleY(1);
+}
+
+/* Garlands and hanging flowers keep the faintest sway. */
+@keyframes sway {
+  0%,
+  100% {
+    transform: rotate(-0.45deg);
+  }
+  50% {
+    transform: rotate(0.45deg);
+  }
+}
+.sway {
+  transform-origin: top center;
+  animation: sway 9s ease-in-out infinite;
+  will-change: transform;
+}
+
+/* Lantern flame — brightness that drifts rather than blinks. */
+@keyframes lantern {
+  0%,
+  100% {
+    opacity: 0.72;
+  }
+  40% {
+    opacity: 0.95;
+  }
+  70% {
+    opacity: 0.8;
+  }
+}
+.lantern-glow {
+  animation: lantern 6.5s ease-in-out infinite;
+}
+
+/* Petals drifting up through the closing chapter. */
+@keyframes petal-rise {
+  0% {
+    transform: translate3d(0, 12px, 0) rotate(0deg);
+    opacity: 0;
+  }
+  18% {
+    opacity: 0.85;
+  }
+  100% {
+    transform: translate3d(var(--drift, 14px), -108px, 0) rotate(var(--spin, 140deg));
+    opacity: 0;
+  }
+}
+
+/* ==========================================================================
+   CONTROLS — part of the artwork, never a piece of product UI.
+   ========================================================================== */
+
+.tap-target {
+  min-width: 44px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mehndi :focus-visible {
+  outline: 2px solid var(--marigold);
+  outline-offset: 4px;
+  border-radius: 2px;
+}
+
+/* ==========================================================================
+   REDUCED MOTION — the courtyard stops moving, and loses nothing.
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .mehndi *,
+  .mehndi *::before,
+  .mehndi *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    transition-delay: 0ms !important;
+    scroll-behavior: auto !important;
+  }
+  .mehndi .reveal,
+  .mehndi .wash {
+    opacity: 1;
+    transform: none;
+    clip-path: none;
+  }
+  .mehndi .draw {
+    transform: scaleY(1);
+  }
+}

@@ -1,0 +1,118 @@
+/* A small aged-brass token, sitting clear of the home indicator. */
+
+.control {
+  position: fixed;
+  right: 18px;
+  bottom: calc(18px + env(safe-area-inset-bottom));
+  z-index: 50;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  animation: control-in 1.2s var(--ease-silk) 1.9s both;
+}
+
+@keyframes control-in {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 10px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.brass {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 34% 28%, #d8b779, #9d7d4a 62%, #7b5f36);
+  box-shadow:
+    0 1px 0 rgba(255, 236, 196, 0.42) inset,
+    0 -1px 2px rgba(0, 0, 0, 0.3) inset,
+    0 3px 12px rgba(20, 12, 4, 0.34);
+  transition: transform 0.4s var(--ease-silk);
+}
+
+.control:active .brass {
+  transform: scale(0.94);
+}
+
+/* Four little reeds that rise and fall while the music plays. */
+.bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 13px;
+}
+
+.bars > span {
+  width: 2px;
+  height: 4px;
+  border-radius: 1px;
+  background: #241705;
+  opacity: 0.85;
+  transition: height 0.4s var(--ease-silk);
+}
+
+.bars[data-playing="true"] > span {
+  animation: reed 1.5s ease-in-out infinite;
+}
+.bars[data-playing="true"] > span:nth-child(2) {
+  animation-delay: 0.22s;
+}
+.bars[data-playing="true"] > span:nth-child(3) {
+  animation-delay: 0.45s;
+}
+.bars[data-playing="true"] > span:nth-child(4) {
+  animation-delay: 0.12s;
+}
+
+/* Paused reads as a flat, even row — still legible without motion. */
+.bars[data-playing="false"] > span {
+  height: 3px;
+  opacity: 0.55;
+}
+
+@keyframes reed {
+  0%,
+  100% {
+    height: 4px;
+  }
+  50% {
+    height: 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .control {
+    animation: none;
+  }
+  .bars[data-playing="true"] > span {
+    animation: none;
+  }
+  /* Without motion the state is carried by height alone. */
+  .bars[data-playing="true"] > span:nth-child(1) {
+    height: 7px;
+  }
+  .bars[data-playing="true"] > span:nth-child(2) {
+    height: 12px;
+  }
+  .bars[data-playing="true"] > span:nth-child(3) {
+    height: 9px;
+  }
+  .bars[data-playing="true"] > span:nth-child(4) {
+    height: 12px;
+  }
+}
+
+/* Keep the control on the invitation's edge rather than the window's. */
+@media (min-width: 900px) {
+  .control {
+    right: calc(50vw - var(--column) / 2 + 18px);
+  }
+}

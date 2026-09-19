@@ -1,0 +1,99 @@
+/* The details, on rose paper under a painted Mughal border. */
+
+.section {
+  padding-block: 0 clamp(80px, 15vh, 128px);
+  overflow: hidden;
+}
+
+/* The border strip is wider than the screen so the repeat never shows its
+   ends; only its painted band is kept, not the paper above and below it. */
+.borderWrap {
+  position: relative;
+  z-index: 2;
+  width: 148%;
+  margin-inline: -24%;
+  margin-bottom: clamp(44px, 8vh, 70px);
+}
+
+.border {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.stage {
+  text-align: center;
+}
+
+.eyebrow {
+  margin: 0 0 clamp(34px, 6vh, 52px);
+  color: var(--fuchsia);
+  font-weight: 500;
+}
+
+/* --- the plate ----------------------------------------------------------- */
+
+.list {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(30px, 5.5vh, 44px);
+}
+
+.row {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.label {
+  color: rgba(74, 32, 48, 0.5);
+  font-size: 0.625rem;
+  letter-spacing: 0.34em;
+}
+
+.value {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 7px;
+}
+
+.valueText {
+  font-size: clamp(1.9rem, 8.6vw, 2.4rem);
+  line-height: 1.02;
+  color: #57202f;
+}
+
+.note {
+  font-family: var(--font-sans), system-ui, sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  color: rgba(74, 32, 48, 0.58);
+}
+
+.dressNote {
+  margin: clamp(38px, 7vh, 58px) auto 0;
+  max-width: 22rem;
+  font-family: var(--font-display), Georgia, serif;
+  font-style: italic;
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  color: rgba(74, 32, 48, 0.66);
+  text-wrap: balance;
+}
+
+.seamIn {
+  background: linear-gradient(to bottom, var(--ivory), rgba(244, 227, 224, 0));
+  height: 90px;
+  z-index: 1;
+}
+
+@media (min-width: 768px) {
+  .borderWrap {
+    width: 128%;
+    margin-inline: -14%;
+  }
+}

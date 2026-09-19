@@ -1,0 +1,94 @@
+/* The signature poster: an expensive printed invitation, full screen. */
+
+.section {
+  padding: 0;
+  display: grid;
+  place-items: center;
+  min-height: 100svh;
+  background: #16331f;
+  isolation: isolate;
+}
+
+.frame {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+/* The painted arch is cropped to the screen from its centre, so the ivory
+   opening always lands in the middle whatever the aspect ratio. */
+.frameArt {
+  object-fit: cover;
+  object-position: center;
+}
+
+/* The inscription sits inside the arch opening, which occupies roughly the
+   middle 60% of the artwork's width and its middle two thirds. */
+.inscription {
+  position: relative;
+  z-index: 2;
+  width: min(68%, 320px);
+  text-align: center;
+  color: #2c4433;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* Optically centred: the arch opening's visual centre sits a little
+     above its geometric centre because of the pointed crown. */
+  margin-top: 2%;
+}
+
+.eyebrow {
+  margin: 0;
+  color: var(--fuchsia);
+  font-size: 0.5625rem;
+  letter-spacing: 0.34em;
+}
+
+.ruleWrap {
+  display: block;
+  width: 64%;
+  margin-block: 18px;
+}
+.ruleWrap > span {
+  display: block;
+}
+
+.names {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #23402c;
+}
+
+.name {
+  font-size: clamp(1.45rem, 6.6vw, 1.9rem);
+  line-height: 1.06;
+}
+
+.amp {
+  font-size: clamp(0.85rem, 3.4vw, 1.05rem);
+  color: var(--orange);
+  margin-block: 0.16em;
+}
+
+.meta {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 0.5625rem;
+  letter-spacing: 0.3em;
+  color: rgba(44, 68, 51, 0.72);
+}
+
+.city {
+  color: var(--orange);
+}
+
+@media (min-width: 768px) {
+  .inscription {
+    width: 320px;
+  }
+}

@@ -1,0 +1,57 @@
+/* The saffron room. Large type, then the painting takes the screen. */
+
+.section {
+  padding-block: clamp(76px, 15vh, 128px) 0;
+  overflow: hidden;
+}
+
+.stage {
+  text-align: center;
+}
+
+.eyebrow {
+  margin: 0;
+  color: rgba(46, 26, 9, 0.62);
+}
+
+.headline {
+  margin: 26px auto 0;
+  max-width: 15ch;
+  font-size: clamp(2.1rem, 9.4vw, 2.9rem);
+  line-height: 1.04;
+  color: #35190a;
+  text-wrap: balance;
+}
+
+.artWrap {
+  margin-top: clamp(40px, 8vh, 72px);
+  margin-inline: calc(var(--gutter) * -1);
+  transform: translate3d(0, var(--parallax, 0px), 0);
+  will-change: transform;
+}
+
+.art {
+  display: block;
+  width: 100%;
+  height: auto;
+  /* The painting's own ivory sky reads as light coming off the saffron
+     wall rather than as a pasted-on rectangle. */
+  mask-image: linear-gradient(to bottom, transparent 0%, #000 9%, #000 100%);
+}
+
+.seamIn {
+  background: linear-gradient(to bottom, var(--ivory), rgba(227, 154, 50, 0));
+  height: 110px;
+}
+
+.seamOut {
+  background: linear-gradient(to bottom, rgba(200, 109, 42, 0), var(--ivory));
+  height: 100px;
+  z-index: 4;
+}
+
+@media (min-width: 768px) {
+  .artWrap {
+    margin-inline: 0;
+  }
+}

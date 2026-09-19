@@ -1,0 +1,171 @@
+/* The night ahead: a procession down the page, not a table of times. */
+
+.section {
+  padding-block: clamp(80px, 15vh, 132px);
+  background: var(--cream);
+}
+
+/* A faint Mughal floral repeat, sitting far back in the paper. */
+.wallpaper {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-image: url("/images/mehndi/texture/mughal-floral-pattern.webp");
+  background-size: 260px auto;
+  background-repeat: repeat;
+  opacity: 0.3;
+  mix-blend-mode: multiply;
+  mask-image: radial-gradient(120% 70% at 50% 40%, #000 20%, transparent 78%);
+}
+
+.stage {
+  position: relative;
+  z-index: 2;
+}
+
+.head {
+  text-align: center;
+  margin-bottom: clamp(44px, 8vh, 72px);
+}
+
+.eyebrow {
+  margin: 0;
+  color: var(--fuchsia);
+}
+
+.title2 {
+  margin: 18px 0 0;
+  font-size: clamp(2.6rem, 12vw, 3.4rem);
+  color: var(--green);
+}
+
+/* --- the procession ------------------------------------------------------ */
+
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.event {
+  position: relative;
+  display: grid;
+  grid-template-columns: 84px 1fr;
+  column-gap: 20px;
+  align-items: start;
+  min-height: 104px;
+  padding-bottom: clamp(26px, 5vh, 40px);
+}
+
+.event:last-child {
+  padding-bottom: 0;
+}
+
+/* --- the botanical line -------------------------------------------------- */
+
+.spine {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 42px;
+  width: 1px;
+  z-index: 0;
+}
+
+/* Drawn from the node downward as each moment arrives. */
+.line {
+  position: absolute;
+  top: 46px;
+  bottom: -2px;
+  left: 0;
+  width: 1px;
+  background: linear-gradient(
+    to bottom,
+    rgba(169, 137, 88, 0.85),
+    rgba(169, 137, 88, 0.28)
+  );
+}
+
+/* A small painted diamond where the line meets each moment. */
+.node {
+  position: absolute;
+  top: 40px;
+  left: 50%;
+  width: 7px;
+  height: 7px;
+  translate: -50% 0;
+  rotate: 45deg;
+  background: var(--marigold);
+  opacity: 0;
+  scale: 0.3;
+  transition:
+    opacity 0.7s var(--ease-silk) 0.35s,
+    scale 0.7s var(--ease-silk) 0.35s;
+}
+
+.event[data-shown="true"] .node {
+  opacity: 1;
+  scale: 1;
+}
+
+/* --- the illustrated moment ---------------------------------------------- */
+
+.iconWrap {
+  position: relative;
+  z-index: 2;
+  grid-column: 1;
+  display: block;
+  width: 84px;
+}
+
+.icon {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* --- the words ----------------------------------------------------------- */
+
+.text {
+  grid-column: 2;
+  display: flex;
+  flex-direction: column;
+  padding-top: 12px;
+}
+
+.time {
+  color: var(--orange);
+  font-size: 0.6875rem;
+  letter-spacing: 0.28em;
+}
+
+.title {
+  margin-top: 8px;
+  font-size: clamp(1.7rem, 7.6vw, 2.1rem);
+  line-height: 1.02;
+  color: var(--green);
+}
+
+.description {
+  margin-top: 10px;
+  font-family: var(--font-sans), system-ui, sans-serif;
+  font-size: 0.8125rem;
+  line-height: 1.55;
+  color: var(--ink-on-light-soft);
+  max-width: 24ch;
+}
+
+/* On the narrowest phones the icon gives up a little room before the
+   description ever has to wrap into an unreadable column. */
+@media (max-width: 380px) {
+  .event {
+    grid-template-columns: 74px 1fr;
+    column-gap: 16px;
+  }
+  .iconWrap {
+    width: 74px;
+  }
+  .spine {
+    left: 37px;
+  }
+}
