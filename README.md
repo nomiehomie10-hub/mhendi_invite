@@ -91,18 +91,26 @@ the invitation.
 
 ## Music
 
-Ambient audio is optional and **no track is committed** — you supply one.
-
-Drop a file at any of these and it is picked up with no code change:
+A track ships at `public/audio/`, in two encodings:
 
 ```
-public/audio/mehndi.mp3
-public/audio/mehndi.m4a
-public/audio/mehndi.ogg
+mehndi.m4a   3.0 MB   AAC 96 kbps   <- served
+mehndi.mp3   6.1 MB   MP3 192 kbps  <- fallback
 ```
 
-They are tried in order (`audio.sources` in `data/mehndi.ts`, alongside
-`audio.volume`, which defaults to a background-level 0.34). A small brass
+The AAC leads because it is half the weight at a quality indistinguishable
+for background music, and it is what iOS decodes natively. Candidates are
+tried in order (`audio.sources` in `data/mehndi.ts`, alongside `audio.volume`,
+which sits at a background-level 0.34); a missing file simply falls through to
+the next, and `.ogg` is accepted too. To swap the music, drop a replacement at
+one of those paths — no code change.
+
+Regenerate the AAC from a new MP3 with:
+
+```bash
+afconvert -f m4af -d aac -b 96000 public/audio/mehndi.mp3 public/audio/mehndi.m4a
+```
+ A small brass
 control then appears at the bottom-right once the guest has entered, fading
 the track in over about two and a half seconds. With none of the files
 present the control never renders and nothing breaks.
@@ -112,8 +120,9 @@ iOS only honours a `play()` raised inside a user gesture, and one called from
 a React effect has already left that gesture behind. The controller's
 `start()` is invoked synchronously from the entry tap's own handler.
 
-Both paths are verified: with no file the control stays hidden and the console
-stays clean; with a file it appears, plays, and toggles on a 44 × 44 target.
+Nothing is requested until the guest taps to enter. Both paths are verified:
+with no file the control stays hidden and the console stays clean; with a file
+it appears, plays, and toggles on a 44 × 44 target.
 
 ## Accessibility
 

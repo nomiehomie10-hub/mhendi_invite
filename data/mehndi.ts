@@ -149,11 +149,14 @@ export const mehndi = {
 
   audio: {
     /**
-     * Drop a file at any one of these paths to enable the ambient track.
-     * They are tried in order and missing files are fine — with none of them
-     * present the control never appears.
+     * Candidate paths for the ambient track, tried in order; missing files
+     * are fine, and with none of them present the control never appears.
+     *
+     * AAC leads because it is half the weight of the MP3 at a quality that
+     * is indistinguishable for background music, and it is what iOS decodes
+     * natively. The MP3 stays behind it as the fallback.
      */
-    sources: ["/audio/mehndi.mp3", "/audio/mehndi.m4a", "/audio/mehndi.ogg"],
+    sources: ["/audio/mehndi.m4a", "/audio/mehndi.mp3", "/audio/mehndi.ogg"],
     /** Ambient, not a performance: it should sit under the room. */
     volume: 0.34,
     label: "Ambient music",
