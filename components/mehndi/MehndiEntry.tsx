@@ -22,13 +22,20 @@ export function CourtyardEntrance({ onEnter }: Props) {
   const ref = useRef<HTMLButtonElement>(null);
 
   // The entrance holds the page still until the guest chooses to come in.
+  //
+  // The lock has to go on the root element as well as the body: the document
+  // element is what actually scrolls here, so locking the body alone let the
+  // whole invitation slide past behind the closed doors.
   useEffect(() => {
     if (gone) return;
+    const root = document.documentElement;
     const { body } = document;
-    const previous = body.style.overflow;
+    const previous = { root: root.style.overflow, body: body.style.overflow };
+    root.style.overflow = "hidden";
     body.style.overflow = "hidden";
     return () => {
-      body.style.overflow = previous;
+      root.style.overflow = previous.root;
+      body.style.overflow = previous.body;
     };
   }, [gone]);
 
@@ -39,6 +46,8 @@ export function CourtyardEntrance({ onEnter }: Props) {
   const open = () => {
     if (opening) return;
     setOpening(true);
+    // Whatever happened behind the doors, the courtyard begins at the top.
+    window.scrollTo(0, 0);
     onEnter();
     // The doors take their time; the hero is already behind them.
     window.setTimeout(() => setGone(true), reduced ? 120 : 2000);

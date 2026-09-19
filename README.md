@@ -120,7 +120,10 @@ iOS only honours a `play()` raised inside a user gesture, and one called from
 a React effect has already left that gesture behind. The controller's
 `start()` is invoked synchronously from the entry tap's own handler.
 
-Nothing is requested until the guest taps to enter. Both paths are verified:
+Nothing is requested, loaded or played until the guest presses to open the
+card — the track is fetched by the tap's own handler, so a guest who never
+opens it never downloads it. A reload puts them back at the closed door,
+silent again. Both paths are verified:
 with no file the control stays hidden and the console stays clean; with a file
 it appears, plays, and toggles on a 44 × 44 target.
 
