@@ -148,8 +148,14 @@ export const mehndi = {
   ] satisfies MehndiDetail[],
 
   audio: {
-    /** Drop a file here to enable the ambient track. Missing is fine. */
-    src: "/audio/mehndi.mp3",
+    /**
+     * Drop a file at any one of these paths to enable the ambient track.
+     * They are tried in order and missing files are fine — with none of them
+     * present the control never appears.
+     */
+    sources: ["/audio/mehndi.mp3", "/audio/mehndi.m4a", "/audio/mehndi.ogg"],
+    /** Ambient, not a performance: it should sit under the room. */
+    volume: 0.34,
     label: "Ambient music",
   },
 } as const;

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { mehndiAudio } from "@/lib/mehndi/audio";
 import { CelebrationSection } from "./CelebrationSection";
 import { ClosingCelebration } from "./ClosingCelebration";
 import { CoupleSection } from "./CoupleSection";
@@ -27,7 +28,14 @@ export function MehndiExperience() {
 
   return (
     <div className="mehndi">
-      <CourtyardEntrance onEnter={() => setEntered(true)} />
+      <CourtyardEntrance
+        onEnter={() => {
+          setEntered(true);
+          // Raised inside the tap's own handler, which is the only moment
+          // iOS will let audio begin.
+          mehndiAudio.start();
+        }}
+      />
 
       <main>
         <MehndiHero entered={entered} />

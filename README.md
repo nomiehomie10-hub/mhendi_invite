@@ -91,15 +91,29 @@ the invitation.
 
 ## Music
 
-Ambient audio is optional and **no track is committed**. Drop one at
-`public/audio/mehndi.mp3` (the path is `audio.src` in `data/mehndi.ts`, and any
-format the browser plays will do) and a small brass control appears at the
-bottom-right after the guest enters, fading in over about two and a half
-seconds. With no file, the control never renders and nothing breaks.
+Ambient audio is optional and **no track is committed** — you supply one.
 
-The audio element is only constructed after the entry tap, which is what lets
-iOS play it at all. Verified end to end with a temporary tone: hidden before
-entry, playing after, toggling correctly, 44 × 44px.
+Drop a file at any of these and it is picked up with no code change:
+
+```
+public/audio/mehndi.mp3
+public/audio/mehndi.m4a
+public/audio/mehndi.ogg
+```
+
+They are tried in order (`audio.sources` in `data/mehndi.ts`, alongside
+`audio.volume`, which defaults to a background-level 0.34). A small brass
+control then appears at the bottom-right once the guest has entered, fading
+the track in over about two and a half seconds. With none of the files
+present the control never renders and nothing breaks.
+
+Playback lives in `lib/mehndi/audio.ts` rather than in the component, because
+iOS only honours a `play()` raised inside a user gesture, and one called from
+a React effect has already left that gesture behind. The controller's
+`start()` is invoked synchronously from the entry tap's own handler.
+
+Both paths are verified: with no file the control stays hidden and the console
+stays clean; with a file it appears, plays, and toggles on a 44 × 44 target.
 
 ## Accessibility
 
