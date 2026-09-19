@@ -65,12 +65,17 @@ the palm, then the pattern runs up the fingers and the thumb, and the cuff
 closes it at the wrist. Under reduced motion it arrives already drawn, and a
 "Fill it in" control covers anyone who cannot hold a pointer down.
 
-The hand is drawn in `components/mehndi/handGeometry.ts` as plain arithmetic
-over fixed constants, so the server and the client produce identical markup.
-Palm and wrist are one contour with the fingers and thumb overlapping it; all
-of them share a fill and carry no stroke, so the pieces merge into a single
-silhouette rather than reading as parts bolted together. The henna is clipped
-to that silhouette, so it can never stray off the skin.
+The hand fills the screen and is drawn in `components/mehndi/handGeometry.ts`
+as plain arithmetic over fixed constants, so the server and the client produce
+identical markup and it stays sharp at any size.
+
+It is one continuous outline rather than a palm with fingers laid over it.
+Overlapping shapes cannot give the two things that make a hand read as a hand:
+webbing that rises into a soft V between the fingers, and a thumb that swells
+out of the palm instead of being pinned to its edge. Both are curves in that
+single path. A radial gradient lights it from the palm outward and an inner
+edge, clipped to the silhouette, keeps it from reading as a flat cut-out. The
+henna is clipped to the same path, so it can never stray off the skin.
 
 ## Artwork
 

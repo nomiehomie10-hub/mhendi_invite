@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useId, useRef, useState } from "react";
 import { useReducedMotion, useReveal } from "@/lib/mehndi/hooks";
-import { HAND_SHAPES, THUMB, buildHandMehndi } from "./handGeometry";
+import { HAND_SHAPES, buildHandMehndi } from "./handGeometry";
 import styles from "./MehndiHand.module.css";
 
 const STROKES = buildHandMehndi();
@@ -39,18 +39,7 @@ export function MehndiHand() {
   const shownProgress = reduced ? 1 : shown ? progress : 0;
   const n = STROKES.length;
 
-  const handShapes = (
-    <>
-      <path d={HAND_SHAPES.palm} />
-      {HAND_SHAPES.fingers.map((d, i) => (
-        <path key={i} d={d} />
-      ))}
-      <path
-        d={HAND_SHAPES.thumb}
-        transform={`rotate(${THUMB.rotate} ${THUMB.originX} ${THUMB.originY})`}
-      />
-    </>
-  );
+  const handShapes = <path d={HAND_SHAPES.outline} />;
 
   return (
     <section
@@ -76,7 +65,7 @@ export function MehndiHand() {
           onPointerLeave={() => setDrawing(false)}
         >
           <svg
-            viewBox="0 0 400 620"
+            viewBox={HAND_SHAPES.viewBox}
             className={styles.svg}
             role="img"
             aria-label="A hand that fills with bridal mehndi as you hold it"
@@ -84,22 +73,26 @@ export function MehndiHand() {
             <defs>
               {/* Henna cannot stray off the skin. */}
               <clipPath id={clipId}>{handShapes}</clipPath>
+              <radialGradient id={`${clipId}-light`} cx="44%" cy="46%" r="58%">
+                <stop offset="0%" stopColor="#f3d6b6" />
+                <stop offset="100%" stopColor="#e3bd98" />
+              </radialGradient>
             </defs>
 
-            {/* the hand itself */}
-            <g className={styles.skin}>{handShapes}</g>
+            {/* the hand itself, lit softly from the palm outward */}
+            <g className={styles.skin}>
+              <path d={HAND_SHAPES.outline} fill={`url(#${clipId}-light)`} />
+            </g>
+            {/* an inner edge, clipped so only the inside half of it shows */}
+            <g clipPath={`url(#${clipId})`}>
+              <path d={HAND_SHAPES.outline} className={styles.edge} />
+            </g>
 
             <g clipPath={`url(#${clipId})`}>
               {/* a faint stencil, so there is visibly something to fill in */}
               <g className={styles.guide} data-done={done}>
                 {STROKES.map((s, i) => (
-                  <path
-                    key={i}
-                    d={s.d}
-                    transform={
-                      s.rotate ? `rotate(${s.rotate} ${s.cx} ${s.cy})` : undefined
-                    }
-                  />
+                  <path key={i} d={s.d} transform={s.transform} />
                 ))}
               </g>
 
@@ -111,14 +104,16 @@ export function MehndiHand() {
                     0,
                     Math.min(1, (shownProgress - start) / span)
                   );
+                  // A round line cap renders a zero-length dash as a dot, so
+                  // a stroke that has not begun is left out entirely rather
+                  // than speckling the stencil.
+                  if (local <= 0) return null;
                   return (
                     <path
                       key={i}
                       d={s.d}
                       pathLength={1}
-                      transform={
-                        s.rotate ? `rotate(${s.rotate} ${s.cx} ${s.cy})` : undefined
-                      }
+                      transform={s.transform}
                       style={{ strokeDashoffset: 1 - local }}
                     />
                   );

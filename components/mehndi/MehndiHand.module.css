@@ -3,9 +3,12 @@
 .section {
   background: #efe0cc;
   color: #4a2a16;
-  justify-content: center;
-  padding-block: calc(var(--chapter-pad) + env(safe-area-inset-top))
-    calc(var(--chapter-pad) + env(safe-area-inset-bottom));
+  /* The hand is the screen here, so the chapter gives up its usual padding
+     and lets the artwork take every pixel that is left over. */
+  justify-content: stretch;
+  padding-block: calc(clamp(26px, 5vh, 48px) + env(safe-area-inset-top))
+    calc(clamp(20px, 4vh, 40px) + env(safe-area-inset-bottom));
+  padding-inline: 10px;
 }
 
 /* A soft pool of light, as if a hand were resting under a lamp. */
@@ -23,22 +26,32 @@
 
 .stage {
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  min-height: 0;
 }
 
 .heading {
   margin: 0;
-  font-size: clamp(2.1rem, 9.6vw, 2.8rem);
+  flex: none;
+  font-size: clamp(1.9rem, 8.4vw, 2.5rem);
   color: #6b3a1c;
 }
 
 /* --- the palm ------------------------------------------------------------ */
 
+/* Fills whatever height is left between the heading and the caption. The
+   SVG fits itself to that box, so the hand is always as large as the screen
+   allows without ever being cropped. */
 .hand {
   position: relative;
   display: block;
-  width: min(70vw, 286px);
-  margin: clamp(6px, 1.5vh, 14px) auto 0;
-  aspect-ratio: 400 / 620;
+  flex: 1;
+  width: 100%;
+  min-height: 0;
+  margin: clamp(4px, 1vh, 10px) auto 0;
   cursor: pointer;
   touch-action: manipulation;
   -webkit-tap-highlight-color: transparent;
@@ -49,14 +62,22 @@
   display: block;
   width: 100%;
   height: 100%;
-  overflow: visible;
 }
 
 /* The skin the henna goes onto. No stroke: the shapes share one fill and
    merge into a single silhouette, rather than each showing its own edge. */
 .skin path {
-  fill: #e8c6a3;
   stroke: none;
+}
+
+/* Drawn on top of the fill and clipped to it, so only the inner half of the
+   stroke lands — which is what gives the silhouette a soft edge instead of a
+   flat cut-out. */
+.edge {
+  fill: none;
+  stroke: #c9a078;
+  stroke-width: 3;
+  opacity: 0.55;
 }
 
 .skin {
@@ -101,7 +122,7 @@
 .hint {
   position: absolute;
   left: 50%;
-  bottom: -22px;
+  bottom: 2px;
   translate: -50% 0;
   font-family: var(--font-sans), system-ui, sans-serif;
   font-size: 0.625rem;
@@ -122,7 +143,8 @@
 }
 
 .caption {
-  margin: clamp(18px, 3.5vh, 30px) auto 0;
+  flex: none;
+  margin: clamp(22px, 4vh, 34px) auto 0;
   max-width: 24rem;
   font-family: var(--font-display), Georgia, serif;
   font-style: italic;
@@ -134,7 +156,8 @@
 
 /* A way through for anyone who cannot hold a pointer down. */
 .skip {
-  margin-top: 22px;
+  flex: none;
+  margin-top: 14px;
   min-height: 44px;
   padding-inline: 10px;
   border: 0;
