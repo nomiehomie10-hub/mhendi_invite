@@ -58,24 +58,15 @@ places and each one is a different act: a plate at the door, the arrival, the
 formal record on the poster, a signature at the close. The date and venue are
 set once on the poster and once in the details, and nowhere else.
 
-**Apply the Mehndi** is the one screen the guest does something on. A woman's
-hand is shown with a faint stencil of bridal mehndi on it, and pressing and
-holding draws the henna on: the gol tikki blooms outward from the centre of
-the palm, then the pattern runs up the fingers and the thumb, and the cuff
-closes it at the wrist. Under reduced motion it arrives already drawn, and a
-"Fill it in" control covers anyone who cannot hold a pointer down.
+**Apply the Mehndi** is the one screen the guest does something on. A gol
+tikki — the round motif that goes on the palm — is shown as a faint stencil,
+and pressing and holding draws it on in henna from the centre outward. Under
+reduced motion it arrives already drawn, and a "Fill it in" control covers
+anyone who cannot hold a pointer down.
 
-The hand fills the screen and is drawn in `components/mehndi/handGeometry.ts`
-as plain arithmetic over fixed constants, so the server and the client produce
-identical markup and it stays sharp at any size.
-
-It is one continuous outline rather than a palm with fingers laid over it.
-Overlapping shapes cannot give the two things that make a hand read as a hand:
-webbing that rises into a soft V between the fingers, and a thumb that swells
-out of the palm instead of being pinned to its edge. Both are curves in that
-single path. A radial gradient lights it from the palm outward and an inner
-edge, clipped to the silhouette, keeps it from reading as a flat cut-out. The
-henna is clipped to the same path, so it can never stray off the skin.
+The motif is generated in the component as plain arithmetic over fixed
+constants, so the server and the client produce identical markup and it stays
+sharp at any size.
 
 ## Artwork
 

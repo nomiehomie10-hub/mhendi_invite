@@ -10,7 +10,7 @@ import { EntranceDoors } from "./MehndiEntry";
 import { DetailsSection } from "./DetailsSection";
 import { MehndiCountdown } from "./MehndiCountdown";
 import { MehndiHero } from "./MehndiHero";
-import { MehndiHand } from "./MehndiHand";
+import { MehndiMandala } from "./MehndiMandala";
 import { MehndiTimeline } from "./MehndiTimeline";
 import { MusicControl } from "./MusicControl";
 import { SignaturePoster } from "./SignaturePoster";
@@ -44,7 +44,7 @@ export function MehndiExperience() {
         <SignaturePoster />
         <CelebrationSection />
         <MehndiTimeline />
-        <MehndiHand />
+        <MehndiMandala />
         <DetailsSection />
         <VenueSection />
         <MehndiCountdown />
