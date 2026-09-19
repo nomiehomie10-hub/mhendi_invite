@@ -1,4 +1,4 @@
-/* The one screen the guest does something on: henna drawn onto a warm palm. */
+/* The one screen the guest does something on: henna drawn onto a hand. */
 
 .section {
   background: #efe0cc;
@@ -33,12 +33,12 @@
 
 /* --- the palm ------------------------------------------------------------ */
 
-.palm {
+.hand {
   position: relative;
   display: block;
-  width: min(92vw, 396px);
-  margin: clamp(8px, 2vh, 18px) auto 0;
-  aspect-ratio: 1;
+  width: min(70vw, 286px);
+  margin: clamp(6px, 1.5vh, 14px) auto 0;
+  aspect-ratio: 400 / 620;
   cursor: pointer;
   touch-action: manipulation;
   -webkit-tap-highlight-color: transparent;
@@ -50,6 +50,17 @@
   width: 100%;
   height: 100%;
   overflow: visible;
+}
+
+/* The skin the henna goes onto. No stroke: the shapes share one fill and
+   merge into a single silhouette, rather than each showing its own edge. */
+.skin path {
+  fill: #e8c6a3;
+  stroke: none;
+}
+
+.skin {
+  filter: drop-shadow(0 6px 14px rgba(124, 63, 29, 0.14));
 }
 
 /* The stencil: just enough to read as a pattern waiting to be filled. */
@@ -72,7 +83,7 @@
 .ink path {
   fill: none;
   stroke: #7c3f1d;
-  stroke-width: 2.6;
+  stroke-width: 2.2;
   stroke-linecap: round;
   stroke-linejoin: round;
   stroke-dasharray: 1;
@@ -80,7 +91,7 @@
   filter: drop-shadow(0 0 1.2px rgba(124, 63, 29, 0.45));
 }
 
-.palm[data-done="true"] .ink path {
+.hand[data-done="true"] .ink path {
   opacity: 1;
   transition: opacity 1.2s var(--ease-silk);
 }
@@ -90,7 +101,7 @@
 .hint {
   position: absolute;
   left: 50%;
-  bottom: -14px;
+  bottom: -22px;
   translate: -50% 0;
   font-family: var(--font-sans), system-ui, sans-serif;
   font-size: 0.625rem;
@@ -101,11 +112,11 @@
   transition: opacity 0.5s var(--ease-silk);
 }
 
-.palm[data-drawing="true"] .hint {
+.hand[data-drawing="true"] .hint {
   opacity: 0;
 }
 
-.palm[data-done="true"] .hint {
+.hand[data-done="true"] .hint {
   color: var(--fuchsia);
   opacity: 1;
 }

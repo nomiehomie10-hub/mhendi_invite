@@ -58,11 +58,19 @@ places and each one is a different act: a plate at the door, the arrival, the
 formal record on the poster, a signature at the close. The date and venue are
 set once on the poster and once in the details, and nowhere else.
 
-**Apply the Mehndi** is the one screen the guest does something on. A gol tikki
-— the round motif that goes on the palm — is shown as a faint stencil, and
-pressing and holding draws it on in henna from the centre outward. Under
-reduced motion it arrives already drawn, and a "Fill it in" control covers
-anyone who cannot hold a pointer down.
+**Apply the Mehndi** is the one screen the guest does something on. A woman's
+hand is shown with a faint stencil of bridal mehndi on it, and pressing and
+holding draws the henna on: the gol tikki blooms outward from the centre of
+the palm, then the pattern runs up the fingers and the thumb, and the cuff
+closes it at the wrist. Under reduced motion it arrives already drawn, and a
+"Fill it in" control covers anyone who cannot hold a pointer down.
+
+The hand is drawn in `components/mehndi/handGeometry.ts` as plain arithmetic
+over fixed constants, so the server and the client produce identical markup.
+Palm and wrist are one contour with the fingers and thumb overlapping it; all
+of them share a fill and carry no stroke, so the pieces merge into a single
+silhouette rather than reading as parts bolted together. The henna is clipped
+to that silhouette, so it can never stray off the skin.
 
 ## Artwork
 
