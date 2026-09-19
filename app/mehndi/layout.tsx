@@ -23,7 +23,7 @@ const sans = Inter({
   display: "swap",
 });
 
-const title = `Mehndi Night — ${mehndi.couple.bride} & ${mehndi.couple.groom}`;
+const title = `${mehndi.occasion.first} & ${mehndi.occasion.second} — ${mehndi.couple.bride} & ${mehndi.couple.groom}`;
 
 export const metadata: Metadata = {
   title,

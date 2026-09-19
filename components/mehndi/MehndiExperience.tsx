@@ -8,6 +8,7 @@ import { CourtyardEntrance } from "./MehndiEntry";
 import { DetailsSection } from "./DetailsSection";
 import { MehndiCountdown } from "./MehndiCountdown";
 import { MehndiHero } from "./MehndiHero";
+import { MehndiMandala } from "./MehndiMandala";
 import { MehndiTimeline } from "./MehndiTimeline";
 import { MusicControl } from "./MusicControl";
 import { SignaturePoster } from "./SignaturePoster";
@@ -33,6 +34,7 @@ export function MehndiExperience() {
         <SignaturePoster />
         <CelebrationSection />
         <MehndiTimeline />
+        <MehndiMandala />
         <DetailsSection />
         <VenueSection />
         <MehndiCountdown />

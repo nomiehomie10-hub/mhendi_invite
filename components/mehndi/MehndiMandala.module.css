@@ -1,0 +1,141 @@
+/* The one screen the guest does something on: henna drawn onto a warm palm. */
+
+.section {
+  background: #efe0cc;
+  color: #4a2a16;
+  justify-content: center;
+  padding-block: calc(var(--chapter-pad) + env(safe-area-inset-top))
+    calc(var(--chapter-pad) + env(safe-area-inset-bottom));
+}
+
+/* A soft pool of light, as if a hand were resting under a lamp. */
+.section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    68% 46% at 50% 48%,
+    rgba(255, 246, 232, 0.9),
+    rgba(226, 202, 172, 0) 70%
+  );
+  pointer-events: none;
+}
+
+.stage {
+  text-align: center;
+}
+
+.heading {
+  margin: 0;
+  font-size: clamp(2.1rem, 9.6vw, 2.8rem);
+  color: #6b3a1c;
+}
+
+/* --- the palm ------------------------------------------------------------ */
+
+.palm {
+  position: relative;
+  display: block;
+  width: min(92vw, 396px);
+  margin: clamp(8px, 2vh, 18px) auto 0;
+  aspect-ratio: 1;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+
+.svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+/* The stencil: just enough to read as a pattern waiting to be filled. */
+.guide path {
+  fill: none;
+  stroke: #7c3f1d;
+  stroke-width: 1.1;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0.17;
+  transition: opacity 1s var(--ease-silk);
+}
+
+.guide[data-done="true"] {
+  opacity: 0;
+}
+
+/* Henna is a stain, not a pen line: warm brown, slightly soft, and it
+   deepens as it dries. */
+.ink path {
+  fill: none;
+  stroke: #7c3f1d;
+  stroke-width: 2.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 1;
+  opacity: 0.88;
+  filter: drop-shadow(0 0 1.2px rgba(124, 63, 29, 0.45));
+}
+
+.palm[data-done="true"] .ink path {
+  opacity: 1;
+  transition: opacity 1.2s var(--ease-silk);
+}
+
+/* --- prompts ------------------------------------------------------------- */
+
+.hint {
+  position: absolute;
+  left: 50%;
+  bottom: -14px;
+  translate: -50% 0;
+  font-family: var(--font-sans), system-ui, sans-serif;
+  font-size: 0.625rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgba(74, 42, 22, 0.5);
+  white-space: nowrap;
+  transition: opacity 0.5s var(--ease-silk);
+}
+
+.palm[data-drawing="true"] .hint {
+  opacity: 0;
+}
+
+.palm[data-done="true"] .hint {
+  color: var(--fuchsia);
+  opacity: 1;
+}
+
+.caption {
+  margin: clamp(18px, 3.5vh, 30px) auto 0;
+  max-width: 24rem;
+  font-family: var(--font-display), Georgia, serif;
+  font-style: italic;
+  font-size: 1.0625rem;
+  line-height: 1.55;
+  color: rgba(74, 42, 22, 0.66);
+  text-wrap: balance;
+}
+
+/* A way through for anyone who cannot hold a pointer down. */
+.skip {
+  margin-top: 22px;
+  min-height: 44px;
+  padding-inline: 10px;
+  border: 0;
+  background: none;
+  font-size: 0.5625rem;
+  letter-spacing: 0.3em;
+  color: rgba(74, 42, 22, 0.45);
+  text-decoration: underline;
+  text-underline-offset: 5px;
+  cursor: pointer;
+}
+
+.skip:hover {
+  color: var(--fuchsia);
+}

@@ -3,6 +3,7 @@
 import { mehndi } from "@/data/mehndi";
 import { useReveal } from "@/lib/mehndi/hooks";
 import { Artwork } from "./Artwork";
+import { OccasionLockup } from "./OccasionLockup";
 import styles from "./SignaturePoster.module.css";
 
 /**
@@ -17,7 +18,7 @@ export function SignaturePoster() {
     <section
       ref={ref}
       className={`chapter chapter--full chapter--deep ${styles.section}`}
-      aria-label={`Mehndi Night — ${mehndi.couple.bride} and ${mehndi.couple.groom}`}
+      aria-label={`Nikah and Mehndi — ${mehndi.couple.bride} and ${mehndi.couple.groom}`}
     >
       <div className={styles.frame}>
         <Artwork
@@ -30,7 +31,7 @@ export function SignaturePoster() {
       </div>
 
       <div className={`${styles.inscription} wash`} data-shown={shown}>
-        <p className={`label ${styles.eyebrow}`}>{mehndi.entry.eyebrow}</p>
+        <OccasionLockup tone="ink" size="md" className={styles.eyebrow} />
 
         <span className={styles.ruleWrap} aria-hidden="true">
           <span className="rule" />

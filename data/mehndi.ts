@@ -16,6 +16,8 @@ export type MehndiEvent = {
   title: string;
   description: string;
   icon: MehndiIcon;
+  /** Which half of the evening this belongs to. */
+  phase: "nikah" | "mehndi";
 };
 
 export type MehndiDetail = {
@@ -26,55 +28,65 @@ export type MehndiDetail = {
 
 export const mehndi = {
   couple: {
-    bride: "Sobia Mariam",
+    bride: "Dr Sobia Mariam",
     groom: "Farhan Ullah Khan",
   },
 
   /**
    * The moment the celebration begins, as an absolute instant.
-   * Dubai runs at UTC+04:00 with no daylight saving, so the offset is fixed
+   * Karachi runs at UTC+05:00 with no daylight saving, so the offset is fixed
    * and the countdown reads the same from anywhere in the world.
    */
-  startsAt: "2027-01-09T18:00:00+04:00",
-  date: "2027-01-09",
-  displayDate: "09 January 2027",
-  displayDay: "Saturday",
-  displayTime: "18:00 onwards",
+  startsAt: "2026-10-09T19:00:00+05:00",
+  endsAt: "2026-10-10T00:30:00+05:00",
+  date: "2026-10-09",
+  displayDate: "09 October 2026",
+  displayDay: "Friday",
+  displayTime: "19:00 onwards",
 
   venue: {
-    name: "Al Bustan Courtyard",
-    address: "Umm Suqeim Street, Al Barsha",
-    city: "Dubai",
-    country: "United Arab Emirates",
-    mapsUrl: "https://maps.google.com/?q=Al+Barsha+Dubai",
+    name: "Creek Club",
+    address: "DHA Phase VIII",
+    city: "Karachi",
+    country: "Pakistan",
+    mapsUrl: "https://maps.google.com/?q=Creek+Club+DHA+Phase+8+Karachi",
   },
 
   dressCode: "Festive Pakistani",
   dressCodeNote: "Marigold, mehndi green, anything that catches the light.",
 
+  /** The two halves of the night, used as one lockup throughout. */
+  occasion: {
+    first: "Nikah",
+    second: "Mehndi",
+    joiner: "&",
+  },
+
   entry: {
-    eyebrow: "Mehndi Night",
     instruction: "Tap to enter",
   },
 
   hero: {
-    eyebrow: "Mehndi Night",
     ampersand: "&",
+    footer: "Karachi \u00b7 Friday evening",
   },
 
   couplePanel: {
-    eyebrow: "The Celebration",
-    body: "Come celebrate an evening of colour, music, laughter and mehndi with us.",
+    eyebrow: "You are invited",
+    body: "One evening, two celebrations \u2014 a promise made, and a courtyard full of colour.",
+    hosts: "Together with our families",
   },
 
   celebration: {
     eyebrow: "The Courtyard",
-    headline: "An evening made for colour, music, laughter and the people we love.",
+    headline: "First the promise. Then the dhol.",
   },
 
   timeline: {
     eyebrow: "The Night Ahead",
     title: "The Night",
+    /** Shown where the ceremony gives way to the celebration. */
+    turn: "The vows are made. Now the courtyard comes alive.",
   },
 
   closing: {
@@ -84,41 +96,39 @@ export const mehndi = {
 
   events: [
     {
-      time: "18:00",
-      title: "Welcome",
+      time: "19:00",
+      title: "Arrival of Guests",
       description: "Chilled sharbat under the garlands as the courtyard fills.",
       icon: "sharbat",
+      phase: "nikah",
     },
     {
-      time: "18:30",
-      title: "Mehndi Begins",
-      description: "The cones come out and the henna starts to travel.",
-      icon: "mehndi-cone",
+      time: "20:00",
+      title: "The Nikah",
+      description: "The ceremony, and the moment everything is promised.",
+      icon: "entrance-arch",
+      phase: "nikah",
     },
     {
-      time: "19:30",
-      title: "Performances",
-      description: "Dhol, dholki and everything the families have been rehearsing.",
-      icon: "dhol",
-    },
-    {
-      time: "20:30",
+      time: "21:00",
       title: "Dinner",
       description: "Served in the courtyard, under the lanterns.",
       icon: "dinner",
+      phase: "mehndi",
     },
     {
-      time: "21:30",
-      title: "Celebration",
-      description: "Dupattas up. We dance until the marigolds come down.",
-      icon: "dupatta",
+      time: "Afterwards",
+      title: "Mehndi & Dances",
+      description: "Dhol, dholki, cones and colour — until the marigolds come down.",
+      icon: "dhol",
+      phase: "mehndi",
     },
   ] satisfies MehndiEvent[],
 
   details: [
-    { label: "Date", value: "09 January 2027", note: "Saturday" },
-    { label: "Time", value: "18:00", note: "Onwards" },
-    { label: "Venue", value: "Al Bustan Courtyard", note: "Al Barsha, Dubai" },
+    { label: "Date", value: "09 October 2026", note: "Friday" },
+    { label: "Time", value: "19:00", note: "Onwards" },
+    { label: "Venue", value: "Creek Club", note: "DHA Phase VIII, Karachi" },
     { label: "Dress Code", value: "Festive Pakistani" },
   ] satisfies MehndiDetail[],
 

@@ -1,0 +1,85 @@
+/* The mark: ceremony and celebration set as one lockup. */
+
+.lockup {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1;
+}
+
+/* NIKAH — small, spaced, upright. The formal half. */
+.first {
+  font-size: var(--lock-first, 0.625rem);
+  letter-spacing: 0.42em;
+  /* the tracking is all on the right, so pull it back to optical centre */
+  text-indent: 0.42em;
+  color: var(--lock-quiet);
+}
+
+/* Mehndi — large and sloped. The half that dances. */
+.second {
+  margin-top: var(--lock-gap, 6px);
+  font-size: var(--lock-second, 1.9rem);
+  font-style: italic;
+  letter-spacing: 0.01em;
+  color: var(--lock-loud);
+}
+
+/* A hairline either side of the ampersand, holding the two halves together. */
+.joinerWrap {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-top: var(--lock-gap, 6px);
+  width: 100%;
+}
+
+.hair {
+  flex: 1;
+  height: 1px;
+  background: var(--lock-rule);
+}
+
+.joiner {
+  font-size: var(--lock-joiner, 0.9rem);
+  color: var(--lock-loud);
+  line-height: 1;
+}
+
+/* --- tones ---------------------------------------------------------------- */
+
+.lockup[data-tone="gold"] {
+  --lock-quiet: #f0d9a4;
+  --lock-loud: #f4ece0;
+  --lock-rule: rgba(214, 178, 116, 0.5);
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.6);
+}
+
+.lockup[data-tone="ink"] {
+  --lock-quiet: var(--fuchsia);
+  --lock-loud: var(--green);
+  --lock-rule: rgba(169, 137, 88, 0.55);
+}
+
+/* --- sizes ---------------------------------------------------------------- */
+
+.lockup[data-size="sm"] {
+  --lock-first: 0.5625rem;
+  --lock-second: 1.45rem;
+  --lock-joiner: 0.75rem;
+  --lock-gap: 5px;
+}
+
+.lockup[data-size="md"] {
+  --lock-first: 0.625rem;
+  --lock-second: clamp(1.75rem, 7.4vw, 2.1rem);
+  --lock-joiner: 0.85rem;
+  --lock-gap: 7px;
+}
+
+.lockup[data-size="lg"] {
+  --lock-first: 0.6875rem;
+  --lock-second: clamp(2.2rem, 10vw, 2.9rem);
+  --lock-joiner: 1rem;
+  --lock-gap: 9px;
+}

@@ -1,5 +1,6 @@
 "use client";
 
+import { Fragment } from "react";
 import { ICON_SOURCES, mehndi, type MehndiEvent } from "@/data/mehndi";
 import { useReveal } from "@/lib/mehndi/hooks";
 import { Artwork } from "./Artwork";
@@ -9,6 +10,24 @@ import styles from "./MehndiTimeline.module.css";
  * One moment in the evening. As it arrives the icon prints itself onto the
  * paper, the text lifts, and the botanical line grows a little further down.
  */
+/**
+ * The hinge of the evening. The ceremony ends here and the courtyard opens
+ * up, so the line itself changes colour from brass to marigold.
+ */
+function PhaseTurn() {
+  const { ref, shown } = useReveal<HTMLLIElement>({ threshold: 0.5 });
+  return (
+    <li ref={ref} className={styles.turn} data-shown={shown} aria-hidden="true">
+      <span className={styles.turnMark}>
+        <span className={styles.turnDot} />
+        <span className={styles.turnDot} />
+        <span className={styles.turnDot} />
+      </span>
+      <span className={styles.turnText}>{mehndi.timeline.turn}</span>
+    </li>
+  );
+}
+
 function TimelineEvent({ event, last }: { event: MehndiEvent; last: boolean }) {
   const { ref, shown } = useReveal<HTMLLIElement>({
     threshold: 0.4,
@@ -16,7 +35,12 @@ function TimelineEvent({ event, last }: { event: MehndiEvent; last: boolean }) {
   });
 
   return (
-    <li ref={ref} className={styles.event} data-shown={shown}>
+    <li
+      ref={ref}
+      className={styles.event}
+      data-shown={shown}
+      data-phase={event.phase}
+    >
       <span className={styles.spine} aria-hidden="true">
         {!last && <span className={`${styles.line} draw`} data-shown={shown} />}
         <span className={styles.node} />
@@ -89,13 +113,18 @@ export function MehndiTimeline() {
         </header>
 
         <ol className={styles.list}>
-          {mehndi.events.map((event, i) => (
-            <TimelineEvent
-              key={event.time + event.title}
-              event={event}
-              last={i === mehndi.events.length - 1}
-            />
-          ))}
+          {mehndi.events.map((event, i) => {
+            const previous = mehndi.events[i - 1];
+            return (
+              <Fragment key={event.time + event.title}>
+                {previous && previous.phase !== event.phase && <PhaseTurn />}
+                <TimelineEvent
+                  event={event}
+                  last={i === mehndi.events.length - 1}
+                />
+              </Fragment>
+            );
+          })}
         </ol>
       </div>
     </section>

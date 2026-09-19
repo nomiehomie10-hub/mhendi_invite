@@ -75,13 +75,6 @@ export function MehndiCountdown() {
           </ol>
         )}
 
-        <p
-          className={`label ${styles.date} reveal`}
-          data-shown={shown}
-          style={{ "--reveal-delay": "520ms" } as React.CSSProperties}
-        >
-          {mehndi.displayDate}
-        </p>
       </div>
     </section>
   );

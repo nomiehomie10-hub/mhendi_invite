@@ -18,6 +18,7 @@ const CHAPTERS = [
   "poster",
   "celebration",
   "timeline",
+  "mandala",
   "details",
   "venue",
   "countdown",

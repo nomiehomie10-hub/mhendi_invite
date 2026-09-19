@@ -2,6 +2,7 @@
 
 import { mehndi } from "@/data/mehndi";
 import { useReveal } from "@/lib/mehndi/hooks";
+import { AddToCalendar } from "./AddToCalendar";
 import { Artwork } from "./Artwork";
 import styles from "./DetailsSection.module.css";
 
@@ -54,9 +55,7 @@ export function DetailsSection() {
               <dt className={`label ${styles.label}`}>{detail.label}</dt>
               <dd className={styles.value}>
                 <span className={`serif ${styles.valueText}`}>{detail.value}</span>
-                {detail.note && (
-                  <span className={styles.note}>{detail.note}</span>
-                )}
+                {detail.note && <span className={styles.note}>{detail.note}</span>}
               </dd>
             </div>
           ))}
@@ -69,6 +68,14 @@ export function DetailsSection() {
         >
           {mehndi.dressCodeNote}
         </p>
+
+        <div
+          className={`${styles.actions} reveal`}
+          data-shown={shown}
+          style={{ "--reveal-delay": "700ms" } as React.CSSProperties}
+        >
+          <AddToCalendar />
+        </div>
       </div>
     </section>
   );

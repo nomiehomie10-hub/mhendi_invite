@@ -81,9 +81,17 @@
   width: 1px;
   background: linear-gradient(
     to bottom,
-    rgba(169, 137, 88, 0.85),
-    rgba(169, 137, 88, 0.28)
+    var(--spine-top, rgba(169, 137, 88, 0.85)),
+    var(--spine-bottom, rgba(169, 137, 88, 0.28))
   );
+}
+
+/* The celebration half of the night runs warmer than the ceremony. */
+.event[data-phase="mehndi"] {
+  --spine-top: rgba(217, 154, 34, 0.9);
+  --spine-bottom: rgba(217, 154, 34, 0.32);
+  --node: var(--rani);
+  --accent: var(--fuchsia);
 }
 
 /* A small painted diamond where the line meets each moment. */
@@ -95,7 +103,7 @@
   height: 7px;
   translate: -50% 0;
   rotate: 45deg;
-  background: var(--marigold);
+  background: var(--node, var(--marigold));
   opacity: 0;
   scale: 0.3;
   transition:
@@ -134,7 +142,7 @@
 }
 
 .time {
-  color: var(--orange);
+  color: var(--accent, var(--orange));
   font-size: 0.6875rem;
   letter-spacing: 0.28em;
 }
@@ -167,5 +175,76 @@
   }
   .spine {
     left: 37px;
+  }
+}
+
+/* --- the turn ------------------------------------------------------------ */
+
+/* Where the Nikah ends and the Mehndi begins. */
+.turn {
+  position: relative;
+  display: grid;
+  grid-template-columns: 84px 1fr;
+  column-gap: 20px;
+  align-items: center;
+  padding-block: clamp(8px, 2vh, 16px) clamp(26px, 5vh, 40px);
+}
+
+.turnMark {
+  grid-column: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 7px;
+  opacity: 0;
+  transform: translate3d(0, -6px, 0);
+  transition:
+    opacity 0.9s var(--ease-silk),
+    transform 0.9s var(--ease-silk);
+}
+
+.turn[data-shown="true"] .turnMark {
+  opacity: 1;
+  transform: none;
+}
+
+/* Three beads marking the change, brass giving way to marigold. */
+.turnDot {
+  width: 5px;
+  height: 5px;
+  rotate: 45deg;
+  background: var(--brass);
+}
+.turnDot:nth-child(2) {
+  background: var(--orange);
+}
+.turnDot:nth-child(3) {
+  background: var(--marigold);
+}
+
+.turnText {
+  grid-column: 2;
+  font-family: var(--font-display), Georgia, serif;
+  font-style: italic;
+  font-size: 1rem;
+  line-height: 1.45;
+  color: rgba(42, 58, 47, 0.72);
+  max-width: 22ch;
+  opacity: 0;
+  transform: translate3d(0, 10px, 0);
+  transition:
+    opacity 1s var(--ease-silk) 0.15s,
+    transform 1s var(--ease-silk) 0.15s;
+}
+
+.turn[data-shown="true"] .turnText {
+  opacity: 1;
+  transform: none;
+}
+
+@media (max-width: 380px) {
+  .turn {
+    grid-template-columns: 74px 1fr;
+    column-gap: 16px;
   }
 }

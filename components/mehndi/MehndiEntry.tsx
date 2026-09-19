@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { mehndi } from "@/data/mehndi";
 import { useReducedMotion } from "@/lib/mehndi/hooks";
 import { Artwork } from "./Artwork";
+import { OccasionLockup } from "./OccasionLockup";
 import styles from "./MehndiEntry.module.css";
 
 type Props = {
@@ -40,7 +41,7 @@ export function CourtyardEntrance({ onEnter }: Props) {
     setOpening(true);
     onEnter();
     // The doors take their time; the hero is already behind them.
-    window.setTimeout(() => setGone(true), reduced ? 120 : 1700);
+    window.setTimeout(() => setGone(true), reduced ? 120 : 2000);
   };
 
   if (gone) return null;
@@ -54,38 +55,41 @@ export function CourtyardEntrance({ onEnter }: Props) {
       data-opening={opening}
       className={styles.entrance}
     >
-      {/* Warm courtyard light, which blooms as the doors part */}
-      <span className={styles.lightLeak} aria-hidden="true" />
-      {/* The doorway artwork, split down the middle so the two halves part */}
-      <span className={styles.doorWrap} aria-hidden="true">
-        <span className={`${styles.door} ${styles.doorLeft}`}>
-          <span className={styles.doorInner}>
-            <Artwork
-              src="/images/mehndi/entry/courtyard-doorway.webp"
-              alt=""
-              fill
-              priority
-              sizes="100vw"
-              className={styles.doorArt}
-            />
+      {/* Everything inside the scene moves toward the guest on entry */}
+      <span className={styles.scene} aria-hidden="true">
+        {/* Warm courtyard light, which blooms as the doors swing */}
+        <span className={styles.lightLeak} />
+        {/* The doorway artwork, split down the middle so the halves hinge */}
+        <span className={styles.doorWrap}>
+          <span className={`${styles.door} ${styles.doorLeft}`}>
+            <span className={styles.doorInner}>
+              <Artwork
+                src="/images/mehndi/entry/courtyard-doorway.webp"
+                alt=""
+                fill
+                priority
+                sizes="100vw"
+                className={styles.doorArt}
+              />
+            </span>
           </span>
-        </span>
-        <span className={`${styles.door} ${styles.doorRight}`}>
-          <span className={styles.doorInner}>
-            <Artwork
-              src="/images/mehndi/entry/courtyard-doorway.webp"
-              alt=""
-              fill
-              priority
-              sizes="100vw"
-              className={styles.doorArt}
-            />
+          <span className={`${styles.door} ${styles.doorRight}`}>
+            <span className={styles.doorInner}>
+              <Artwork
+                src="/images/mehndi/entry/courtyard-doorway.webp"
+                alt=""
+                fill
+                priority
+                sizes="100vw"
+                className={styles.doorArt}
+              />
+            </span>
           </span>
         </span>
       </span>
 
       <span className={styles.plate}>
-        <span className={`label ${styles.eyebrow}`}>{mehndi.entry.eyebrow}</span>
+        <OccasionLockup tone="gold" size="md" className={styles.lockup} />
         <span className={styles.names}>
           <span className={`serif ${styles.name}`}>{mehndi.couple.bride}</span>
           <span className={`amp ${styles.amp}`} aria-hidden="true">

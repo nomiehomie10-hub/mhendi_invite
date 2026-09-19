@@ -3,6 +3,7 @@
 .section {
   padding: 0;
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   place-items: center;
   min-height: 100svh;
   background: #16331f;
@@ -27,7 +28,7 @@
 .inscription {
   position: relative;
   z-index: 2;
-  width: min(68%, 320px);
+  width: min(74%, 330px);
   text-align: center;
   color: #2c4433;
   display: flex;
@@ -89,6 +90,6 @@
 
 @media (min-width: 768px) {
   .inscription {
-    width: 320px;
+    width: 330px;
   }
 }

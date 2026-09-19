@@ -3,6 +3,7 @@
 import { mehndi } from "@/data/mehndi";
 import { useParallax } from "@/lib/mehndi/hooks";
 import { Artwork } from "./Artwork";
+import { OccasionLockup } from "./OccasionLockup";
 import styles from "./MehndiHero.module.css";
 
 /**
@@ -19,7 +20,7 @@ export function MehndiHero({ entered }: { entered: boolean }) {
     <section
       className={`chapter chapter--full chapter--green pigment ${styles.hero}`}
       data-entered={entered}
-      aria-label="Mehndi Night"
+      aria-label={`${mehndi.occasion.first} & ${mehndi.occasion.second}`}
     >
       <div ref={background} className={styles.bg}>
         <Artwork
@@ -45,7 +46,9 @@ export function MehndiHero({ entered }: { entered: boolean }) {
       </div>
 
       <div className={`stage ${styles.plate}`}>
-        <p className={`label ${styles.eyebrow}`}>{mehndi.hero.eyebrow}</p>
+        <div className={styles.eyebrow}>
+          <OccasionLockup tone="gold" size="lg" />
+        </div>
 
         <h1 className={styles.headline}>
           <span className={`name ${styles.first}`}>{mehndi.couple.bride}</span>
@@ -57,11 +60,7 @@ export function MehndiHero({ entered }: { entered: boolean }) {
 
         <div className={styles.foot}>
           <span className="rule rule--dark" aria-hidden="true" />
-          <p className={`label ${styles.meta}`}>
-            <span>{mehndi.displayDate}</span>
-            <span className={styles.dot} aria-hidden="true" />
-            <span>{mehndi.venue.city}</span>
-          </p>
+          <p className={`label ${styles.meta}`}>{mehndi.hero.footer}</p>
         </div>
       </div>
 

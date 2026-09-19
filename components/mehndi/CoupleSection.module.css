@@ -34,34 +34,32 @@
   height: auto;
 }
 
-.names {
+/* The wreath's ring of flowers is widest across its middle third, so the
+   words sit inside that opening rather than underneath the artwork. */
+.invitation {
   grid-area: 1 / 1;
   z-index: 2;
   margin: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  padding-inline: 25%;
   color: var(--green);
-  /* The wreath's ring of flowers is widest across its middle third. */
-  padding-inline: 15%;
 }
 
-.name {
-  font-size: clamp(1.25rem, 5.6vw, 1.7rem);
-  line-height: 1.06;
-}
-
-.amp {
-  font-size: clamp(0.85rem, 3.4vw, 1.05rem);
-  color: var(--orange);
-  margin-block: 0.18em;
-}
-
-.body {
-  margin: 36px auto 0;
-  max-width: 21rem;
-  color: var(--ink-on-light-soft);
+/* The wreath holds the invitation itself rather than the names, which the
+   hero and the poster already carry. */
+.invitation {
+  font-family: var(--font-display), Georgia, serif;
+  font-weight: 300;
+  font-size: clamp(0.875rem, 3.7vw, 1.05rem);
+  line-height: 1.55;
+  letter-spacing: 0.005em;
   text-wrap: balance;
+}
+
+.hosts {
+  margin: 40px auto 0;
+  font-size: 0.5625rem;
+  letter-spacing: 0.32em;
+  color: rgba(42, 58, 47, 0.42);
 }
 
 @media (min-width: 768px) {

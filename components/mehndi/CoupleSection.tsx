@@ -49,24 +49,20 @@ export function CoupleSection() {
 
           <h2
             id="couple-heading"
-            className={`${styles.names} reveal`}
+            className={`${styles.invitation} reveal`}
             data-shown={shown}
             style={{ "--reveal-delay": "420ms" } as React.CSSProperties}
           >
-            <span className={`serif ${styles.name}`}>{mehndi.couple.bride}</span>
-            <span className={`amp ${styles.amp}`} aria-hidden="true">
-              &amp;
-            </span>
-            <span className={`serif ${styles.name}`}>{mehndi.couple.groom}</span>
+            {mehndi.couplePanel.body}
           </h2>
         </div>
 
         <p
-          className={`body ${styles.body} reveal`}
+          className={`label ${styles.hosts} reveal`}
           data-shown={shown}
           style={{ "--reveal-delay": "560ms" } as React.CSSProperties}
         >
-          {mehndi.couplePanel.body}
+          {mehndi.couplePanel.hosts}
         </p>
       </div>
     </section>

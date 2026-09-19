@@ -1,0 +1,22 @@
+/* A brass line of type, matching the venue's map link. */
+
+.button {
+  gap: 9px;
+  padding: 12px 4px 10px;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  font-size: 0.625rem;
+  letter-spacing: 0.3em;
+  color: var(--fuchsia);
+  border-bottom: 1px solid rgba(169, 47, 97, 0.35);
+  transition:
+    color 0.4s var(--ease-silk),
+    border-color 0.4s var(--ease-silk);
+}
+
+.button:hover,
+.button:focus-visible {
+  color: #7d1e45;
+  border-bottom-color: rgba(125, 30, 69, 0.75);
+}

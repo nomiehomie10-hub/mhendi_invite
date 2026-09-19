@@ -15,12 +15,29 @@
   overflow: hidden;
   -webkit-tap-highlight-color: transparent;
   touch-action: manipulation;
-  transition: opacity 0.5s var(--ease-silk) 1.15s;
+  /* Depth, so the doors swing rather than slide. */
+  perspective: 1100px;
+  perspective-origin: 50% 46%;
+  transition: opacity 0.6s var(--ease-silk) 1.05s;
 }
 
 .entrance[data-opening="true"] {
   opacity: 0;
   pointer-events: none;
+}
+
+/* The scene moves toward the guest as the doors give way: the last thing
+   that happens is the doorway passing around them. */
+.scene {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+  transition: transform 1.75s cubic-bezier(0.5, 0, 0.3, 1);
+  will-change: transform;
+}
+
+.entrance[data-opening="true"] .scene {
+  transform: scale(1.38);
 }
 
 /* --- light beyond the doors --------------------------------------------- */
@@ -34,20 +51,21 @@
   transform: translate(-50%, -50%) scale(0.7);
   background: radial-gradient(
     ellipse at center,
-    rgba(255, 214, 140, 0.85) 0%,
-    rgba(227, 154, 50, 0.4) 34%,
-    rgba(227, 154, 50, 0) 70%
+    rgba(255, 220, 158, 0.7) 0%,
+    rgba(227, 154, 50, 0.26) 30%,
+    rgba(227, 154, 50, 0) 58%
   );
   opacity: 0;
-  filter: blur(14px);
+  filter: blur(18px);
   transition:
-    opacity 1.6s var(--ease-silk),
-    transform 1.8s var(--ease-silk);
+    opacity 1.1s var(--ease-silk) 0.1s,
+    transform 1.7s var(--ease-silk);
 }
 
+/* Warmth spilling out of the doorway — never a wash over the whole screen. */
 .entrance[data-opening="true"] .lightLeak {
-  opacity: 1;
-  transform: translate(-50%, -50%) scale(1.5);
+  opacity: 0.55;
+  transform: translate(-50%, -50%) scale(1.25);
 }
 
 /* --- the doors ----------------------------------------------------------- */
@@ -65,29 +83,33 @@
   width: 50.4%;
   overflow: hidden;
   /* Flush until the tap: the cut down the middle must be invisible. */
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
   transition:
-    transform 1.6s var(--ease-curtain),
-    filter 1.6s var(--ease-silk);
+    transform 1.7s cubic-bezier(0.62, 0.02, 0.24, 1),
+    filter 1.7s var(--ease-silk);
   will-change: transform;
 }
 
 .doorLeft {
   left: 0;
   transform-origin: left center;
-  transform: translate3d(0, 0, 0);
 }
 
 .doorRight {
   right: 0;
   transform-origin: right center;
-  transform: translate3d(0, 0, 0);
 }
 
+/* Hinged on the outer edge, so each panel swings toward the guest and
+   catches the light as it turns. */
 .entrance[data-opening="true"] .doorLeft {
-  transform: translate3d(-101%, 0, 0);
+  transform: rotateY(76deg);
+  filter: brightness(0.62);
 }
 .entrance[data-opening="true"] .doorRight {
-  transform: translate3d(101%, 0, 0);
+  transform: rotateY(-76deg);
+  filter: brightness(0.62);
 }
 
 /* Each half clips one side of a single continuous painting. The inner layer
@@ -114,10 +136,24 @@
 
 /* --- the plate ----------------------------------------------------------- */
 
+.plate::before {
+  content: "";
+  position: absolute;
+  inset: -26% -30%;
+  background: radial-gradient(
+    56% 50% at 50% 50%,
+    rgba(10, 24, 15, 0.88) 0%,
+    rgba(10, 24, 15, 0.66) 42%,
+    rgba(10, 24, 15, 0) 78%
+  );
+  pointer-events: none;
+  z-index: -1;
+}
+
 .plate {
   position: absolute;
   left: 50%;
-  bottom: calc(clamp(56px, 13vh, 104px) + env(safe-area-inset-bottom));
+  bottom: calc(clamp(40px, 9vh, 76px) + env(safe-area-inset-bottom));
   translate: -50% 0;
   z-index: 5;
   display: flex;
@@ -132,7 +168,10 @@
 
 .entrance[data-opening="true"] .plate {
   opacity: 0;
-  transform: translate3d(0, 14px, 0);
+  transform: translate3d(0, 10px, 0) scale(1.06);
+  transition:
+    opacity 0.45s var(--ease-silk),
+    transform 0.9s var(--ease-silk);
 }
 
 .eyebrow {
@@ -141,7 +180,7 @@
 }
 
 .names {
-  margin-top: 14px;
+  margin-top: 26px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -163,14 +202,14 @@
 .ruleWrap {
   display: block;
   width: 116px;
-  margin-top: 20px;
+  margin-top: 22px;
 }
 .ruleWrap > span {
   display: block;
 }
 
 .instruction {
-  margin-top: 20px;
+  margin-top: 28px;
   color: rgba(244, 236, 224, 0.82);
   font-size: 0.625rem;
   letter-spacing: 0.38em;
@@ -200,7 +239,8 @@
   }
   .door,
   .lightLeak,
-    .plate,
+  .scene,
+  .plate,
   .entrance {
     transition-duration: 0.15s !important;
     transition-delay: 0ms !important;
@@ -215,4 +255,12 @@
     width: var(--column);
     margin-left: calc(var(--column) / -2);
   }
+}
+
+/* The entry lockup sits over the brightest part of the painting. */
+.lockup {
+  --lock-quiet: #f6e2b4;
+  text-shadow:
+    0 1px 3px rgba(8, 20, 12, 0.9),
+    0 3px 18px rgba(8, 20, 12, 0.75);
 }
