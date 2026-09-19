@@ -4,6 +4,7 @@ import { useState } from "react";
 import { CelebrationSection } from "./CelebrationSection";
 import { ClosingCelebration } from "./ClosingCelebration";
 import { CoupleSection } from "./CoupleSection";
+import { FormalInvitation } from "./FormalInvitation";
 import { CourtyardEntrance } from "./MehndiEntry";
 import { DetailsSection } from "./DetailsSection";
 import { MehndiCountdown } from "./MehndiCountdown";
@@ -30,6 +31,7 @@ export function MehndiExperience() {
 
       <main>
         <MehndiHero entered={entered} />
+        <FormalInvitation />
         <CoupleSection />
         <SignaturePoster />
         <CelebrationSection />

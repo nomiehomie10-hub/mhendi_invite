@@ -28,7 +28,7 @@ export type MehndiDetail = {
 
 export const mehndi = {
   couple: {
-    bride: "Dr Sobia Mariam",
+    bride: "Dr. Sobia Mariam",
     groom: "Farhan Ullah Khan",
   },
 
@@ -66,15 +66,30 @@ export const mehndi = {
     instruction: "Tap to enter",
   },
 
+  /** The formal wording: who is invited, by whom, and on whose behalf. */
+  formal: {
+    lead: "You are invited to the",
+    of: "of",
+    joiner: "with",
+    bride: {
+      relation: "Daughter of",
+      parents: "Mr. & Mrs. Lt Col (R) Ghulam Farooq",
+    },
+    groom: {
+      relation: "Son of",
+      parents: "Mr. & Mrs. Maj (R) Shahid Ashraf",
+    },
+  },
+
   hero: {
     ampersand: "&",
     footer: "Karachi \u00b7 Friday evening",
   },
 
   couplePanel: {
-    eyebrow: "You are invited",
-    body: "One evening, two celebrations \u2014 a promise made, and a courtyard full of colour.",
-    hosts: "Together with our families",
+    eyebrow: "Dear friends and family",
+    body: "Join us for an evening of love, laughter, duas and unforgettable memories as we begin our forever.",
+    hosts: "",
   },
 
   celebration: {

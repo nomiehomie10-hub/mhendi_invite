@@ -41,8 +41,14 @@ content, so changing a time or the venue is a one-line edit.
 
 ## The chapters
 
-Entry → Hero → The Invitation → Signature Poster → Celebration → The Night →
-Apply the Mehndi → Details → Venue → Countdown → Closing.
+Entry → Hero → Formal Invitation → The Note → Signature Poster → Celebration →
+The Night → Apply the Mehndi → Details → Venue → Countdown → Closing.
+
+**Formal Invitation** is the printed-card wording: who is invited, to what, and
+on whose behalf, with both sets of parents named. It takes the couple's names
+from `couple` rather than keeping its own copy, so the two can never drift
+apart. **The Note** follows it in the wreath — the warm line to friends and
+family, which is all the wreath's opening has room for.
 
 Each chapter is a room in the same courtyard, and the colour moves through
 green → ivory → green → saffron → ivory → skin → rose → dusk → green → ivory.
@@ -85,10 +91,15 @@ the invitation.
 
 ## Music
 
-Ambient audio is optional. Drop a file at `public/audio/mehndi.mp3` and a small
-brass control appears after the guest enters; with no file, nothing is shown
-and nothing breaks. Audio is only created after the entry tap, which is what
-lets iOS play it.
+Ambient audio is optional and **no track is committed**. Drop one at
+`public/audio/mehndi.mp3` (the path is `audio.src` in `data/mehndi.ts`, and any
+format the browser plays will do) and a small brass control appears at the
+bottom-right after the guest enters, fading in over about two and a half
+seconds. With no file, the control never renders and nothing breaks.
+
+The audio element is only constructed after the entry tap, which is what lets
+iOS play it at all. Verified end to end with a temporary tone: hidden before
+entry, playing after, toggling correctly, 44 × 44px.
 
 ## Accessibility
 

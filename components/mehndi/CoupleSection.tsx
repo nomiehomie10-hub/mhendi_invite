@@ -57,13 +57,6 @@ export function CoupleSection() {
           </h2>
         </div>
 
-        <p
-          className={`label ${styles.hosts} reveal`}
-          data-shown={shown}
-          style={{ "--reveal-delay": "560ms" } as React.CSSProperties}
-        >
-          {mehndi.couplePanel.hosts}
-        </p>
       </div>
     </section>
   );

@@ -1,57 +1,63 @@
-/* The saffron room. Large type, then the painting takes the screen. */
+/* The saffron room. The painting fills the screen and the words sit in its sky. */
 
 .section {
-  padding-block: clamp(76px, 15vh, 128px) 0;
+  padding-block: 0;
+  padding-inline: var(--gutter);
   overflow: hidden;
+  justify-content: flex-start;
+  isolation: isolate;
 }
 
-.stage {
-  text-align: center;
-}
-
-.eyebrow {
-  margin: 0;
-  color: rgba(46, 26, 9, 0.62);
-}
-
-.headline {
-  margin: 26px auto 0;
-  max-width: 15ch;
-  font-size: clamp(2.1rem, 9.4vw, 2.9rem);
-  line-height: 1.04;
-  color: #35190a;
-  text-wrap: balance;
-}
-
+/* The illustration covers the chapter, anchored to its base so the dancers
+   and the lanterns always stay in frame however tall the screen is. */
 .artWrap {
-  margin-top: clamp(40px, 8vh, 72px);
-  margin-inline: calc(var(--gutter) * -1);
+  position: absolute;
+  inset: 0;
+  z-index: 0;
   transform: translate3d(0, var(--parallax, 0px), 0);
   will-change: transform;
 }
 
 .art {
-  display: block;
-  width: 100%;
-  height: auto;
-  /* The painting's own ivory sky reads as light coming off the saffron
-     wall rather than as a pasted-on rectangle. */
-  mask-image: linear-gradient(to bottom, transparent 0%, #000 9%, #000 100%);
+  object-fit: cover;
+  object-position: 50% 100%;
 }
 
+/* --- the words ----------------------------------------------------------- */
+
+/* Pushed down into the pale sky above the courtyard, which is where the
+   artwork leaves room for them. */
+.stage {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  margin-top: clamp(96px, 21vh, 190px);
+}
+
+.eyebrow {
+  margin: 0;
+  color: rgba(74, 42, 18, 0.62);
+}
+
+.headline {
+  margin: 22px auto 0;
+  max-width: 13ch;
+  font-size: clamp(2.2rem, 10vw, 3rem);
+  line-height: 1.02;
+  color: #4a2410;
+  text-wrap: balance;
+}
+
+/* --- seams --------------------------------------------------------------- */
+
 .seamIn {
-  background: linear-gradient(to bottom, var(--ivory), rgba(227, 154, 50, 0));
-  height: 110px;
+  background: linear-gradient(to bottom, var(--cream), rgba(247, 240, 231, 0));
+  height: 120px;
+  z-index: 3;
 }
 
 .seamOut {
-  background: linear-gradient(to bottom, rgba(200, 109, 42, 0), var(--ivory));
-  height: 100px;
-  z-index: 4;
-}
-
-@media (min-width: 768px) {
-  .artWrap {
-    margin-inline: 0;
-  }
+  background: linear-gradient(to bottom, rgba(233, 214, 184, 0), var(--cream));
+  height: 90px;
+  z-index: 3;
 }

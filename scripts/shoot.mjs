@@ -14,6 +14,7 @@ const OUT = `/tmp/shots/${LABEL}`;
 
 const CHAPTERS = [
   "hero",
+  "formal",
   "couple",
   "poster",
   "celebration",
