@@ -32,7 +32,8 @@
   position: relative;
   z-index: 2;
   text-align: center;
-  margin-top: clamp(118px, 26vh, 236px);
+  /* Dropped to sit level with the top of the pavilion behind it. */
+  margin-top: clamp(162px, 35vh, 310px);
 }
 
 .eyebrow {
