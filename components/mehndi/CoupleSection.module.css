@@ -8,16 +8,11 @@
   text-align: center;
 }
 
-.eyebrow {
-  color: var(--fuchsia);
-  margin: 0;
-}
-
 /* The wreath and the names share one box so the type always lands dead
    centre of the ring, at every width. */
 .wreathWrap {
   position: relative;
-  margin-top: 34px;
+  margin-top: 0;
   display: grid;
   place-items: center;
   /* The drift belongs to the whole medallion: move the artwork on its own and

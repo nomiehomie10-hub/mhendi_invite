@@ -39,13 +39,19 @@ export function CelebrationSection() {
           {mehndi.celebration.eyebrow}
         </p>
 
-        <h2
-          id="celebration-heading"
-          className={`display ${styles.headline} reveal`}
-          data-shown={shown}
-          style={{ "--reveal-delay": "140ms" } as React.CSSProperties}
-        >
-          {mehndi.celebration.headline}
+        <h2 id="celebration-heading" className={styles.headline}>
+          {mehndi.celebration.headline.map((line, i) => (
+            <span
+              key={line}
+              className={`${styles.line} reveal`}
+              data-shown={shown}
+              style={
+                { "--reveal-delay": `${140 + i * 150}ms` } as React.CSSProperties
+              }
+            >
+              {line}
+            </span>
+          ))}
         </h2>
       </div>
 

@@ -21,14 +21,6 @@ export function CoupleSection() {
       aria-labelledby="couple-heading"
     >
       <div className={`stage ${styles.stage}`}>
-        <p
-          className={`label ${styles.eyebrow} reveal`}
-          data-shown={shown}
-          style={{ "--reveal-delay": "0ms" } as React.CSSProperties}
-        >
-          {mehndi.couplePanel.eyebrow}
-        </p>
-
         <div ref={wreath} className={styles.wreathWrap}>
           <div
             className={`${styles.wreath} wash`}
