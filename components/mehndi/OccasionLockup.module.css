@@ -7,12 +7,14 @@
   line-height: 1;
 }
 
-/* NIKAH — small, spaced, upright. The formal half. */
+/* NIKKAH — spaced, upright capitals. The formal half, and it has to carry
+   its own weight against the sloped serif beside it. */
 .first {
-  font-size: var(--lock-first, 0.625rem);
-  letter-spacing: 0.42em;
+  font-size: var(--lock-first, 0.95rem);
+  font-weight: 600;
+  letter-spacing: 0.32em;
   /* the tracking is all on the right, so pull it back to optical centre */
-  text-indent: 0.42em;
+  text-indent: 0.32em;
   color: var(--lock-quiet);
 }
 
@@ -64,21 +66,21 @@
 /* --- sizes ---------------------------------------------------------------- */
 
 .lockup[data-size="sm"] {
-  --lock-first: 0.5625rem;
+  --lock-first: 0.76rem;
   --lock-second: 1.45rem;
   --lock-joiner: 0.75rem;
   --lock-gap: 5px;
 }
 
 .lockup[data-size="md"] {
-  --lock-first: 0.625rem;
+  --lock-first: 0.95rem;
   --lock-second: clamp(1.75rem, 7.4vw, 2.1rem);
   --lock-joiner: 0.85rem;
   --lock-gap: 7px;
 }
 
 .lockup[data-size="lg"] {
-  --lock-first: 0.6875rem;
+  --lock-first: 1.12rem;
   --lock-second: clamp(2.2rem, 10vw, 2.9rem);
   --lock-joiner: 1rem;
   --lock-gap: 9px;
