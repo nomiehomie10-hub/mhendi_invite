@@ -86,9 +86,13 @@ export const mehndi = {
     footer: "Karachi \u00b7 Friday evening",
   },
 
+  /**
+   * The wreath is the couple's own voice — deliberately not the wording on
+   * the printed card, which the formal chapter above it already carries.
+   */
   couplePanel: {
-    eyebrow: "Dear friends and family",
-    body: "Join us for an evening of love, laughter, duas and unforgettable memories as we begin our forever.",
+    eyebrow: "From the two of us",
+    body: "We warmly invite you to join us for our Nikkah and Mehndi, as we celebrate this beautiful beginning surrounded by love, laughter and the people who mean most to us.",
     hosts: "",
   },
 

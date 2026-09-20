@@ -29,9 +29,8 @@ export function CoupleSection() {
           {mehndi.couplePanel.eyebrow}
         </p>
 
-        <div className={styles.wreathWrap}>
+        <div ref={wreath} className={styles.wreathWrap}>
           <div
-            ref={wreath}
             className={`${styles.wreath} wash`}
             data-shown={shown}
             style={{ "--reveal-delay": "140ms" } as React.CSSProperties}
