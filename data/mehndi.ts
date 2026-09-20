@@ -93,7 +93,6 @@ export const mehndi = {
    */
   couplePanel: {
     body: "We warmly invite you to join us for our Nikkah and Mehndi, as we celebrate this beautiful beginning surrounded by love, laughter and the people who mean most to us.",
-    hosts: "",
   },
 
   celebration: {
