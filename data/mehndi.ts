@@ -87,11 +87,12 @@ export const mehndi = {
   },
 
   /**
-   * The wreath is the couple's own voice — deliberately not the wording on
-   * the printed card, which the formal chapter above it already carries.
+   * The wreath carries the invitation in the couple's words, under a line
+   * naming the bride's family as hosts. Deliberately not the wording on the
+   * printed card, which the formal chapter above it already carries.
    */
   couplePanel: {
-    eyebrow: "From the two of us",
+    eyebrow: "Hosted by the bride's family",
     body: "We warmly invite you to join us for our Nikkah and Mehndi, as we celebrate this beautiful beginning surrounded by love, laughter and the people who mean most to us.",
     hosts: "",
   },
