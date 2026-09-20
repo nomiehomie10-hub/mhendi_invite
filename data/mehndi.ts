@@ -97,7 +97,7 @@ export const mehndi = {
 
   celebration: {
     eyebrow: "The Evening",
-    headline: ["First the promise.", "Then the dhol."],
+    headline: ["One sacred promise,", "followed by a night", "of celebration."],
   },
 
   timeline: {

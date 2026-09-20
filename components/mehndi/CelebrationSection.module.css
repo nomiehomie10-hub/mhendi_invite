@@ -25,13 +25,17 @@
 
 /* --- the words ----------------------------------------------------------- */
 
-/* Pushed down into the pale sky above the dancing, which is where the
-   artwork leaves room for them. */
+/* Set into the clear pocket of sky the painting leaves: down toward the
+   dancing and over to the left of the pavilion, rather than floating in the
+   middle of the frame. */
 .stage {
   position: relative;
   z-index: 2;
   text-align: center;
-  margin-top: clamp(118px, 26vh, 236px);
+  margin-top: clamp(150px, 33vh, 292px);
+  margin-inline: 0 auto;
+  max-width: min(100%, 304px);
+  transform: translateX(-2%);
 }
 
 .eyebrow {
@@ -55,7 +59,7 @@
   font-family: var(--font-display), Georgia, serif;
   font-style: italic;
   font-weight: 400;
-  font-size: clamp(2.1rem, 9.6vw, 2.9rem);
+  font-size: clamp(1.85rem, 8.2vw, 2.5rem);
   line-height: 1.12;
   letter-spacing: 0.005em;
   white-space: nowrap;
@@ -73,4 +77,21 @@
   background: linear-gradient(to bottom, rgba(233, 214, 184, 0), var(--cream));
   height: 90px;
   z-index: 3;
+}
+
+/* A wide screen shows more of the painting: the garland down the left edge
+   and the pavilion up the right, with the open sky sitting higher and
+   narrower between them. The words move up into it and come down in size to
+   clear both sides. */
+@media (min-width: 700px) {
+  .stage {
+    margin-inline: auto;
+    max-width: min(100%, 330px);
+    transform: none;
+    margin-top: clamp(64px, 11vh, 120px);
+  }
+
+  .line {
+    font-size: 2.05rem;
+  }
 }
