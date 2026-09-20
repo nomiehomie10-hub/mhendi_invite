@@ -32,10 +32,9 @@
   position: relative;
   z-index: 2;
   text-align: center;
-  margin-top: clamp(150px, 33vh, 292px);
-  margin-inline: 0 auto;
-  max-width: min(100%, 304px);
-  transform: translateX(-2%);
+  margin-top: clamp(78px, 13vh, 150px);
+  margin-inline: auto;
+  max-width: min(100%, 286px);
 }
 
 .eyebrow {
@@ -59,7 +58,7 @@
   font-family: var(--font-display), Georgia, serif;
   font-style: italic;
   font-weight: 400;
-  font-size: clamp(1.85rem, 8.2vw, 2.5rem);
+  font-size: clamp(1.6rem, 7.1vw, 2.2rem);
   line-height: 1.12;
   letter-spacing: 0.005em;
   white-space: nowrap;
